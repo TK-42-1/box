@@ -8,9 +8,14 @@ describe "StaticPages" do
       expect(page).to have_content('Box Tracking')
     end
     
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/home'
-      expect(page).to have_title("Box Tracking | Home")
+      expect(page).to have_title("Box Tracking")
+    end
+    
+    it "should have the custom title" do
+      visit '/static_pages/home'
+      expect(page).to have_title("Home")
     end
   end    
 
@@ -20,9 +25,14 @@ describe "StaticPages" do
       expect(page).to have_content('Help')
     end
     
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/help'
-      expect(page).to have_title("Box Tracking | Help")
+      expect(page).to have_title("Box Tracking")
+    end
+        
+    it "should have the custom title" do
+      visit '/static_pages/help'
+      expect(page).to have_title("Help")
     end
   end
 
@@ -32,9 +42,14 @@ describe "StaticPages" do
       expect(page).to have_content('About Us')
     end
     
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/about'
-      expect(page).to have_title("Box Tracking | About")
+      expect(page).to have_title("Box Tracking")
+    end
+        
+    it "should have the custom title" do
+      visit '/static_pages/about'
+      expect(page).to have_title("About")
     end
   end
 end
