@@ -32,6 +32,7 @@ describe "User Pages" do
     
     describe "with good info" do
       before do
+        fill_in "Username", with: "Example"
         fill_in "Name", with: "Example"
         fill_in "Email", with: "dude@example.com"
         fill_in "Password", with: "farts"

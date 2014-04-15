@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  before { @user = User.new(name: "Example", email: "user@example.com", password: "balls", password_confirmation: "balls")}
+  before { @user = User.new(name: "Example", username: "example", email: "user@example.com", password: "balls", password_confirmation: "balls")}
   
   subject { @user }
   
   it { should respond_to(:name)}
+  it { should respond_to(:username)}
+  it { should respond_to(:remember_token)}
   it { should respond_to(:email)}
   it { should respond_to(:password_digest)}
   it { should respond_to(:password)}
@@ -19,6 +21,21 @@ describe User do
   
   describe "when the name is too long" do
     before { @user.name = "a" * 51 }
+    it { should_not be_valid }
+  end
+  
+  describe "when there is no username" do
+    before {@user.username = " "}
+    it { should_not be_valid }
+  end
+  
+  describe "when username is taken" do
+    before do
+      username_dupe = @user.dup
+      username_dupe.username = @user.username.upcase
+      username_dupe.save
+    end
+    
     it { should_not be_valid }
   end
   
@@ -91,5 +108,10 @@ describe User do
       it { should_not eq user_bad }
       specify { expect(user_bad).to be_false }
     end
+  end
+  
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
   end
 end
