@@ -25,18 +25,40 @@ describe "Authentication" do
     end
       
     describe "with good info" do
-      let(:user) { FactoryGirl.create(:user)}
-      before { sign_in user }
+      describe "as admin" do
+        let(:admin) { FactoryGirl.create(:admin)}
+        before {sign_in admin}
+        
+        it {should have_title(admin.name)}
+        it {should have_link('Index', href: users_path)}
+        it {should have_link('Create', href: signup_path)}
+        it {should have_link('Index', href: boxes_path)}
+        it {should have_link('Create', href: new_box_path)}
+        it {should have_link('Index', href: companies_path)}
+        it {should have_link('Create', href: new_company_path)}
+        it {should have_link('Settings', href: edit_user_path(admin))}
+        it {should have_link('Sign out', href: signout_path)}
+        it {should_not have_link('Sign in', href: signin_path)}
+        
+      end
+      describe "as regular user" do
+        let(:user) { FactoryGirl.create(:user)}
+        before { sign_in user }
       
-      it {should have_title(user.name)}
-      it {should have_link('Users', href: users_path)}
-      it {should have_link('Profile', href: user_path(user))}
-      it {should have_link('Settings', href: edit_user_path(user))}
-      it {should have_link('Sign out', href: signout_path)}
-      it {should_not have_link('Sign in', href: signin_path)}
+        it {should have_title(user.name)}
+        it {should_not have_link('Users', href: users_path)}
+        it {should have_link('Home', href: user_path(user))}
+        it {should_not have_link('Settings', href: edit_user_path(user))}
+        it {should have_link('Sign out', href: signout_path)}
+        it {should_not have_link('Sign in', href: signin_path)}
+      end
          
       describe "after signout" do
-        before { click_link "Sign out" }
+        let(:user) { FactoryGirl.create(:user)}
+        before do
+          sign_in user
+          click_link "Sign out" 
+        end
         it { should have_link('Sign in')}
       end
     end
@@ -57,7 +79,7 @@ describe "Authentication" do
         
         describe "after signing in" do
           it "should render the desired page" do
-            expect(page).to have_title('Edit user')
+            expect(page).to have_title('Box Tracking')
           end
         end
       end
@@ -84,17 +106,32 @@ describe "Authentication" do
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user)}
       let(:wrong_user) { FactoryGirl.create(:user, username: "wrong", email: "wrong@wrong.com")}
-      before { sign_in user, no_capybara: true }
+      let(:admin) { FactoryGirl.create(:admin, username: "admin")}
       
-      describe "submitting GET to Users#edit" do
-        before {get edit_user_path(wrong_user)}
-        specify { expect(response.body).not_to match(full_title('Edit user'))}
-        specify { expect(response).to redirect_to(root_url)}
+
+      describe "and as normal user" do
+        before { sign_in user, no_capybara: true }
+        
+        describe "submitting GET to Users#edit" do
+          before {get edit_user_path(wrong_user)}
+          specify { expect(response.body).not_to match(full_title('Edit user'))}
+          specify { expect(response).to redirect_to(root_url)}
+        end
+      
+        describe "submitting PATCH to Users#update" do
+          before { patch user_path(wrong_user)}
+          specify { expect(response).to redirect_to(root_url)}
+        end  
       end
-      
-      describe "submitting PATCH to Users#update" do
-        before { patch user_path(wrong_user)}
-        specify { expect(response).to redirect_to(root_url)}
+
+      describe "and as admin" do
+        before { sign_in admin, no_capybara:true }
+        
+        describe "submit GET to Users#edit" do
+          before {get edit_user_path(wrong_user)}
+          specify { expect(response.body).to match(full_title('Edit user'))}
+          specify { expect(response.body).not_to redirect_to(root_url)}
+        end
       end
     end
     

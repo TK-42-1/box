@@ -11,7 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416174142) do
+ActiveRecord::Schema.define(version: 20140424202212) do
+
+  create_table "boxes", force: true do |t|
+    t.string   "description"
+    t.string   "created_by"
+    t.string   "month"
+    t.string   "year"
+    t.string   "destroy_by"
+    t.string   "stored_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "departments", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "code"
+    t.string   "room"
+    t.string   "row"
+    t.string   "section"
+    t.string   "shelf"
+    t.string   "slot"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -22,6 +56,8 @@ ActiveRecord::Schema.define(version: 20140416174142) do
     t.string   "remember_token"
     t.string   "username"
     t.boolean  "admin",           default: false
+    t.string   "company"
+    t.string   "department"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

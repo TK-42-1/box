@@ -30,12 +30,16 @@ module SessionsHelper
     self.current_user = nil
   end
   
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default )
+  def redirect_back_or(current_user)
+    redirect_to(session[:return_to] || self.current_user )
     session.delete(:return_to)
   end
   
   def store_location
     session[:return_to] = request.url if request.get?
+  end
+  
+  def admin?
+    current_user.admin?
   end
 end

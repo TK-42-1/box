@@ -5,14 +5,29 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(page: params[:page])
+    @current = current_user
+    if @current.admin? 
+      render 'index'
+    else
+      flash[:error] = "Unauthorized access"
+      redirect_to @current
+    end
   end
   
   def new
     @user = User.new
+    @current = current_user
+    if @current.admin? 
+      render 'new'
+    else
+      flash[:error] = "Unauthorized access"
+      redirect_to @current
+    end
   end
   
   def create
     @user = User.new(user_params)
+    
     if @user.save
       flash[:success] = "User successfully created"
       redirect_to @user
@@ -26,9 +41,18 @@ class UsersController < ApplicationController
   end
   
   def edit
+    @user = User.find(params[:id])
+    @current = current_user
+    if @current.admin? 
+      render 'edit'
+    else
+      flash[:error] = "Unauthorized access"
+      redirect_to @current
+    end
   end
   
   def update
+    params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(user_params)
       flash[:success] = "User updated"
       redirect_to @user
@@ -46,7 +70,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :name, :email, :password, :password_confirmation, :admin)
   end
   
   def signed_in_user
@@ -56,10 +80,15 @@ class UsersController < ApplicationController
   
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to(root_url) unless current_user.admin? || current_user?(@user)
   end
   
   def admin_user
     redirect_to(root_url) unless current_user.admin?
+  end
+  
+  def current_user
+    remember_token = User.hash(cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: remember_token)
   end
 end
