@@ -1,15 +1,16 @@
 require 'spec_helper'
 
-describe Boxes do
+describe Box do
   before do
-    @user = User.new(name: "Example", username: "example", email: "user@example.com", password: "balls", password_confirmation: "balls")
-    @box = Boxes.new( description: 'new box', created_by: @user.username, month: '07', year: '2014', destroy_by: '07-2021')
+    @box = Box.new( description: 'new box', user_id: '1', month: '07', year: '2014', destroy_by: '07-2021', company_id: '1', department_id: '1')
   end 
   
   subject { @box }
   
   it { should respond_to(:description)}
-  it { should respond_to(:created_by)}
+  it { should respond_to(:user_id)}
+  it { should respond_to(:company_id)}
+  it { should respond_to(:department_id)}
   it { should respond_to(:month)}
   it { should respond_to(:year)}
   it { should respond_to(:destroy_by)}
@@ -23,7 +24,17 @@ describe Boxes do
   end
   
   describe "when there is no creator" do
-    before { @box.created_by = " " }
+    before { @box.user_id = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "when there is no company" do
+    before { @box.company_id = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "when there is no department" do
+    before { @box.department_id = " " }
     it { should_not be_valid }
   end
   

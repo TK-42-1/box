@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Box::Application.load_tasks
+Boxapp::Application.load_tasks

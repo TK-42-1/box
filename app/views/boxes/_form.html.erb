@@ -1,0 +1,12 @@
+<%= form_for(@box) do |f| %>
+	<%= render 'shared/error_messages' %>
+
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+			
+	<%= f.label :company_id %>
+	<%= f.collection_select(:company_id, Company.all, :id ) %>
+	<br/>	
+	<br/>	
+	<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+<% end %>

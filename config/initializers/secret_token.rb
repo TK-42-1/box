@@ -22,4 +22,4 @@ def secure_token
   end
 end
 
-Box::Application.config.secret_key_base = secure_token
+Boxapp::Application.config.secret_key_base = secure_token

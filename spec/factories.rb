@@ -10,4 +10,16 @@ FactoryGirl.define do
       admin true
     end
   end
+  
+  factory :box do
+    sequence(:description) { |n| "This is box #{n}"}
+    sequence(:user_id) { |n| "user#{n}"}
+    company_id "1"
+    department_id "1"
+    month "07"
+    year "2014"
+    destroy_by "07-2021"
+    stored_by "johngalt"
+    
+  end
 end

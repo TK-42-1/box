@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'rename'
 
 
 group :development, :test do
