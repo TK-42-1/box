@@ -47,14 +47,15 @@ class BoxesController < ApplicationController
     end
   end
   
+  def destroy
+    Box.find(params[:id]).destroy
+    flash[:success] = "Box deleted"
+    redirect_to boxes_path
+  end
+  
   private
   
   def box_params
     params.require(:box).permit(:description, :month, :year, :destroy_by, :user_id, :company_id, :department_id)
-  end
-  
-  def signed_in_user
-    store_location
-    redirect_to signin_url, notice: "Please sign in." unless signed_in?
   end
 end

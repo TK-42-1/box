@@ -1,0 +1,5 @@
+	<%= link_to @company.id, @company %> <%= @company.name %>
+		| <%= link_to "edit", edit_company_path(@company) %>
+	<% if current_user.admin? %>
+	| <%= link_to "delete", @company, method: :delete, data: { confirm: "Confirm deletion"}%>
+	<% end %>
