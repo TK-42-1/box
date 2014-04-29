@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "BoxesPages" do
+describe "BoxPages" do
   subject { page }
   
   describe "index" do
@@ -17,13 +17,13 @@ describe "BoxesPages" do
     
     describe "pagination" do
     
-      before(:all) {30.times { FactoryGirl.create(:boxes)}}      
-      after(:all)  { Boxes.delete_all}
+      before(:all) {30.times { FactoryGirl.create(:box)}}      
+      after(:all)  { Box.delete_all}
     
       it {should have_selector('div.pagination')}
       it "should list each box" do
-        Boxes.paginate(page: 1).each do |box|
-          expect(page).to have_selector('li', text: box.company.name)
+        Box.paginate(page: 1).each do |box|
+          expect(page).to have_selector('li', text: box.company)
         end
       end
     end

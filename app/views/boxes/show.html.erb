@@ -1,0 +1,5 @@
+	<%= link_to @box.id, @box %> <%= @box.company.name %> <%= @box.department.name %> <%= @box.month.rjust(2, '0') %>-<%= @box.year %> <%= @box.description %> | DESTROY BY: <%= @box.destroy_by %>
+		| <%= link_to "edit", edit_box_path(@box) %>
+	<% if current_user.admin? %>
+	| <%= link_to "delete", @box, method: :delete, data: { confirm: "Confirm deletion"}%>
+	<% end %>

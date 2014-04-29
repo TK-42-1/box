@@ -86,9 +86,4 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-  
-  def current_user
-    remember_token = User.hash(cookies[:remember_token])
-    @current_user ||= User.find_by(remember_token: remember_token)
-  end
 end

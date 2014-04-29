@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140428220653) do
 
-  create_table "box", force: true do |t|
+  create_table "boxes", force: true do |t|
     t.string   "description"
     t.integer  "user_id"
     t.string   "month"

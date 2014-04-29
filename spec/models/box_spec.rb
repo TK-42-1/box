@@ -53,13 +53,8 @@ describe Box do
     it { should_not be_valid }
   end
   
-  describe "when destroy date format is bad" do
-    it "should be invalid" do
-      dates = %w[11/14 072014 A4-FFFF 15/2014 11@2014 12A2014 12+15 ]
-      dates.each do |bad_date|
-        @box.destroy_by = bad_date
-        expect(@box).to_not be_valid
-      end
-    end
+  describe "when there is no user associated" do
+    before { @box.user_id = " " }
+    it { should_not be_valid }
   end
 end
