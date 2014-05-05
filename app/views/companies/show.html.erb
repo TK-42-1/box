@@ -3,3 +3,8 @@
 	<% if current_user.admin? %>
 	| <%= link_to "delete", @company, method: :delete, data: { confirm: "Confirm deletion"}%>
 	<% end %>
+<ul>
+	<% @company.departments.each do |dept| %>
+	<li><%= dept.name %></li>
+	<% end %>
+</ul>

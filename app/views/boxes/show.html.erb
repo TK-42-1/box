@@ -1,5 +1,24 @@
-	<%= link_to @box.id, @box %> <%= @box.company.name %> <%= @box.department.name %> <%= @box.month.rjust(2, '0') %>-<%= @box.year %> <%= @box.description %> | DESTROY BY: <%= @box.destroy_by %>
-		| <%= link_to "edit", edit_ox_path(@box) %>
-	<% if current_user.admin? %>
-	| <%= link_to "delete", @box, method: :delete, data: { confirm: "Confirm deletion"}%>
-	<% end %>
+<div class="row">
+	<div class="box-company span6"><%= @box.company.name %></div>
+	<div class="date span3 offset3"><%= @box.month.rjust(2, '0') %>-<%= @box.year %></div>
+</div>
+<div class="row">
+	<div class="box-department span6"><%= @box.department.name %></div>
+	<div class="destroy-by span6 offset">DESTROY BY: <%= @box.destroy_by %></div>
+</div>
+<div class="row">
+	<div class="box-description span12"><%= @box.description %></div>
+</div>
+<div class="row">
+	<div class="box-edit span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
+	<div class="box-edit span1"><%= link_to "PRINT", print_box_path(@box) %></div>
+	<div class="box-delete span3 offset7">	
+		<% if current_user.admin? %>
+		<%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%>
+		<% end %>
+	</div>
+</div>
+
+
+
+	

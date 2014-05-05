@@ -9,6 +9,7 @@ class BoxesController < ApplicationController
   
   def new
     @box = Box.new
+    @companies = Company.all
   end
   
   def create
@@ -51,6 +52,17 @@ class BoxesController < ApplicationController
     Box.find(params[:id]).destroy
     flash[:success] = "Box deleted"
     redirect_to boxes_path
+  end
+  
+  def print
+    @box = Box.find(params[:id])
+    @print = true
+  end
+  
+  def update_departments
+    @company = Company.find(params[:company_id])
+    @departments = @company.departments
+    render :layout => !request.xhr?
   end
   
   private

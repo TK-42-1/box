@@ -117,72 +117,13 @@ footer {
   @include box_sizing;
 }
 
-/* sidebar */
-
-aside {
-  section {
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.stats {
-  overflow: auto;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $grayLighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: $blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
-
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-}
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: .5%;
+  margin-bottom: 1%;
   @include box_sizing;
 }
 
@@ -203,9 +144,9 @@ input {
   @extend .error;
  }
 
- /* users index */
+ /* index lists */
 
-.users {
+.index {
   list-style: none;
   margin: 0;
   li {
@@ -218,29 +159,115 @@ input {
   }
 }
 
-/* microposts */
+/* barcode */
 
-.microposts {
-  list-style: none;
-  margin: 10px 0 0 0;
-
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
+@font-face
+{
+font-family: Code39AzaleaFont;
+src: url('Code39Azalea.eot') format('embedded-opentype'), /* IE9 Compat Modes */
+   url('Code39Azalea.woff') format('woff'), /* Modern Browsers */
+   url('Code39Azalea.ttf') format('truetype'), /* Safari, Android, iOS */
+   url('Code39Azalea.svg#Code39Azalea') format('svg'); /* Legacy iOS */
+font-weight: normal;
+font-style: normal;
 }
 
-.content {
-  display: block;
+/* box show page */
+
+.box-company {
+  font-size: 3em;
+  letter-spacing: -2px;
+	margin-bottom: 15px; 
+	font-weight:bold; 
 }
 
-.timestamp {
+.box-department {
+  font-size: 2.5em;
+  letter-spacing: -1px;
+  margin-bottom: 15px;
+  font-weight: normal;
   color: $grayLight;
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
+.date {
+	font-size: 3em;
+  letter-spacing: -2px;
+	text-align: right;
 }
+
+.destroy-by {
+	font-size: 1.5em;
+  letter-spacing: -1px;
+	font-weight:bold;
+	color:red;	
+	text-align: right;
+	vertical-align: text-top;
+}
+
+.box-description {
+	font-size: 1.5em;
+	letter-spacing: -1px;
+}
+
+.box-edit{
+	font-size: 1.5em;
+	letter-spacing: -1px;
+}
+
+.box-delete {
+	font-size: 1.5em;
+  letter-spacing: -1px;
+	font-weight:bold;
+	color:red;	
+	text-align: right;
+  a { color: red; }
+}
+
+/* printing */
+
+#print-box {
+
+	width: 816px;
+	font-size:400%;
+	font-weight:bold;
+}
+
+.barcode { 
+	font-family:Code39AzaleaFont;
+	font-size:250%;
+	line-height:100%;
+}
+
+.destroy {
+	text-align:right;
+}
+
+.small-words {
+	font-size:20%;
+	line-height:10%;
+}
+
+#print-list {
+	ul { list-style: none;
+		li {display: inline;}
+		}	
+}
+
+.hidden {
+	visibility:hidden;
+}
+
+/* label positioning */
+
+.labels { 
+	margin-top:0in;
+	width: 816px;
+	line-height:100%;
+	font-size:600%;
+	font-weight:bold;
+}
+
+.label1 {position: fixed;
+left:1in;top:.5in;}
+.label2 {position: fixed;
+left:1in;top:6in;}

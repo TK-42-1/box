@@ -1,0 +1,4 @@
+<option>-- Select Department --</option>
+<% @departments.each do |department| %>
+  <option value="<%= department.id %>"><%= department.name %></option>
+<% end %>

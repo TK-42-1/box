@@ -8,7 +8,14 @@ Boxapp::Application.routes.draw do
   match '/signout', to: "sessions#destroy", via: 'delete'
   
   resources :users
-  resources :boxes
+  resources :boxes do
+    member do
+      get 'print'
+    end
+    collection do
+      get 'update_departments'
+    end
+  end
   resources :companies
   resources :sessions, only: [:new, :create, :destroy]
   

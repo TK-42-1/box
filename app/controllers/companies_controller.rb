@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :admin_user, only: [:destroy, :children]
 
   def index
     @companies = Company.paginate(page: params[:page])
@@ -24,6 +24,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @departments = @company.departments
   end
 
   def edit
@@ -52,10 +53,11 @@ class CompaniesController < ApplicationController
     flash[:success] = "Company deleted"
     redirect_to companies_path
   end
-
+  
   private
 
   def company_params
-    params.require(:company).permit(:name)
+    params.require(:company).permit!
+    # (:name, divisions_attributes: [:id, :company_id, :department_id])
   end
 end

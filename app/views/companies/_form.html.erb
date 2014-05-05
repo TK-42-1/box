@@ -1,9 +1,7 @@
-<%= form_for(@company) do |f| %>
-	<%= render 'shared/company_error_messages' %>
+<%= simple_form_for @company, html: { class: 'form-horizontal' } do |f| %>
 
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<br/>	
-	<br/>	
-	<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+	<%= f.input :name, required: false %>
+	<%= f.association :departments, as: :check_boxes %>
+	<%= f.button :submit, html: {class: 'center'} %>
+	
 <% end %>

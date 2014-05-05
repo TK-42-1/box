@@ -9,6 +9,8 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'rename'
+gem 'hirb'
+gem 'simple_form'
 
 
 group :development, :test do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428220653) do
+ActiveRecord::Schema.define(version: 20140502151838) do
 
   create_table "boxes", force: true do |t|
     t.string   "description"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20140428220653) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "divisions", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "department_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "divisions", ["company_id"], name: "index_divisions_on_company_id"
+  add_index "divisions", ["department_id", "company_id"], name: "index_divisions_on_department_id_and_company_id", unique: true
+  add_index "divisions", ["department_id"], name: "index_divisions_on_department_id"
 
   create_table "locations", force: true do |t|
     t.string   "code"
