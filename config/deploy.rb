@@ -3,15 +3,13 @@ lock '3.1.0'
 
 set :application, 'boxapp'
 set :repo_url, 'git@github.com:TK-42-1/box.git'
-set :user, 'boxadmin'
-set :use_sudo, true
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
-set :deploy_to, '/var/www/boxapp'
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -42,7 +40,7 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
+      # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
 
@@ -56,7 +54,5 @@ namespace :deploy do
       # end
     end
   end
-  
-  after :finishing, 'deploy:cleanup'
 
 end
