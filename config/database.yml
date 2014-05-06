@@ -20,7 +20,7 @@ test:
 
 production:
   adapter: mysql
-  database: db/boxapp
+  database: boxapp
 	username: deploy
 	password: depl0y!
 	host: localhost
