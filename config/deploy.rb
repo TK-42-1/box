@@ -3,6 +3,8 @@ lock '3.1.0'
 
 set :application, 'boxapp'
 set :repo_url, 'git@github.com:TK-42-1/box.git'
+set :user, 'boxadmin'
+set :use_sudo, true
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -54,5 +56,7 @@ namespace :deploy do
       # end
     end
   end
+  
+  after :finishing, 'deploy:cleanup'
 
 end
