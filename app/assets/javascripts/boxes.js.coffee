@@ -10,4 +10,4 @@ $(document).ready ->
       data:
         company_id: $('.company_select option:selected').val()
 			success: (options) ->
-			      	$('.department_select').html(options)
+					$('.department_select').append.html(options)

@@ -9,7 +9,6 @@ class BoxesController < ApplicationController
   
   def new
     @box = Box.new
-    @companies = Company.all
   end
   
   def create

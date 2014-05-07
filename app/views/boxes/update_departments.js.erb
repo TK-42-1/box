@@ -1,0 +1,5 @@
+$('.department_select').empty();
+$('.department_select').append( $('<option>-- Select Department --</option>'));
+<% @departments.each do |department| %>
+  $('.department_select').append($('<option value="<#= department.id %>"><%= department.name %></option>'));
+<% end %>
