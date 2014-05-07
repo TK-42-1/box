@@ -35,12 +35,18 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :keep_releases, 5
 
 namespace :deploy do
-
+  
+  desc "Add initial admin user"
+  task :seed => :environment do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_END=#{rails_env}"
+  end
+    
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+      run "#{sudo} /etc/init.d/nginx restart"
     end
   end
 
