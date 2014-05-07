@@ -35,13 +35,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :keep_releases, 5
 namespace :deploy do
   
-  desc "reload the database with seed data"
-    task :seed do
-      on roles(:app) do
-        execute "cd #{release_path}; bundle exec rake db:seed RAILS_ENV=production"
-      end
-    end
-  
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
