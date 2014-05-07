@@ -24,3 +24,14 @@ production:
 	username: deploy
 	password: depl0y!
 	host: localhost
+
+# Also can use this script for init.d service  
+# wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh 
+# sudo mv init-deb.sh /etc/init.d/nginx 
+# sudo chmod +x /etc/init.d/nginx 
+# sudo /usr/sbin/update-rc.d -f nginx defaults  
+# 
+# after that you can control nginx with  
+# sudo /etc/init.d/nginx stop 
+# sudo /etc/init.d/nginx start 
+# sudo /etc/init.d/nginx restart
