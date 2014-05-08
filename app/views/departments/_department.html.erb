@@ -1,0 +1,7 @@
+<li>
+	<%= link_to department.id, department %> <%= department.name %>
+		| <%= link_to "edit", edit_department_path(department) %>
+	<% if current_user.admin? %>
+	| <%= link_to "delete", department, method: :delete, data: { confirm: "Confirm deletion"}%>
+	<% end %>
+</li>

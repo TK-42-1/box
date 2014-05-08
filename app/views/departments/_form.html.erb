@@ -1,8 +1,8 @@
-<%= simple_form_for @company, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @department, html: { class: 'form-horizontal' } do |f| %>
 	<%= render 'shared/company_error_messages' %>
 
 	<%= f.input :name, required: false %>
-	<%= f.association :departments, as: :check_boxes %>
+	<%= f.association :companies, as: :check_boxes %>
 	<%= f.button :submit, html: {class: 'center'} %>
 	
 <% end %>

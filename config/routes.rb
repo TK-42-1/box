@@ -17,6 +17,7 @@ Boxapp::Application.routes.draw do
     end
   end
   resources :companies
+  resources :departments
   resources :sessions, only: [:new, :create, :destroy]
   
   

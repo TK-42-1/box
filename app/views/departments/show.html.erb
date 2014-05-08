@@ -1,7 +1,7 @@
-<% provide(:title, @company.name)%>
-<h1><%= @company.name%></h1>
+<% provide(:title, @department.name)%>
+<h1><%= @department.name%></h1>
 <div class="delete"><% if current_user.admin? %>
-			<%= link_to "delete", @company, method: :delete, data: { confirm: "Confirm deletion"}%>
+			<%= link_to "delete", @department, method: :delete, data: { confirm: "Confirm deletion"}%>
 			<% end %></div>
 <% if current_user.admin? %>
 	<div class="row">
@@ -11,7 +11,7 @@
 <% else%>
 	<div class="row">
 		<ul>
-			<% @company.departments.each do |department| %>
+			<% @department.departments.each do |department| %>
 				<li><%= department.name %></li>
 			<% end %>
 		</ul>

@@ -9,11 +9,11 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
+    
   end
 
   def create
     @company = Company.new(company_params)
-  
     if @company.save
       flash[:success] = "Company successfully created"
       redirect_to @company
@@ -24,18 +24,6 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    @departments = @company.departments
-  end
-
-  def edit
-    @company = Company.find(params[:id])
-    @current = current_user
-    if @current.admin? 
-      render 'edit'
-    else
-      flash[:error] = "Unauthorized access"
-      redirect_to 'companies/index'
-    end
   end
 
   def update
@@ -57,7 +45,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit!
-    # (:name, divisions_attributes: [:id, :company_id, :department_id])
+    params.require(:company).permit(:name, {:department_ids => []}, divisions_attributes: [:id, :company_id, {:department_ids => []}])
   end
 end
