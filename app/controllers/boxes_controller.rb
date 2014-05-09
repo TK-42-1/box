@@ -9,11 +9,11 @@ class BoxesController < ApplicationController
   
   def new
     @box = Box.new
+    @company = Company.all
   end
   
   def create
     @box = Box.new(box_params)
-    
     if @box.save
       flash[:success] = "Box successfully created"
       redirect_to @box
@@ -29,12 +29,6 @@ class BoxesController < ApplicationController
   def edit
     @box = Box.find(params[:id])
     @current = current_user
-    if @current.admin? 
-      render 'edit'
-    else
-      flash[:error] = "Unauthorized access"
-      redirect_to 'boxes/index'
-    end
   end
   
   def update
@@ -54,8 +48,9 @@ class BoxesController < ApplicationController
   end
   
   def print
-    @box = Box.find(params[:id])
+    @boxes = Box.params[:print]
     @print = true
+    render :print
   end
   
   def update_departments

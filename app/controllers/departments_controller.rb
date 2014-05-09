@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class DepartmentsController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :admin_user, only: [:destroy, :children]
 
@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
 
   def show
     @department = Department.find(params[:id])
-    @departments = @department.departments
+    @companies = @department.companies
   end
 
   def edit

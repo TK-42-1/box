@@ -1,4 +1,5 @@
 <%= simple_form_for @department, html: { class: 'form-horizontal' } do |f| %>
+	<%= render 'shared/department_error_messages' %>
 
 	<%= f.input :name, required: false %>
 	<%= f.button :submit, html: {class: 'center'} %>

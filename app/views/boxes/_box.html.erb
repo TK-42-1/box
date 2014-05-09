@@ -1,8 +1,20 @@
 <li>
-	<%= link_to box.id, box %> <%= box.company.name %> <%= box.department.name %> <%= box.month.rjust(2, '0') %>-<%= box.year %> <%= box.description %> | DESTROY BY: <%= box.destroy_by %>
-		| <%= link_to "print", print_box_path(box) %>
-		| <%= link_to "edit", edit_box_path(box) %>
-	<% if current_user.admin? %>
-	| <%= link_to "delete", box, method: :delete, data: { confirm: "Confirm deletion"}%>
-	<% end %>
+<div class="row">
+  <div class="span4">
+    <%= check_box_tag :print, box.id, false, multiple: true %>
+    <%= link_to box.id, box, class: "label" %> <%= link_to box.company.name, box.company %> <%= box.department.name %> 
+  </div>
+  <div class="span2"><%= box.month.rjust(2, '0') %>-<%= box.year %></div>
+  <div class="span2 offset2"><div class="label label-important">Destroy <%= box.destroy_by %></div></div>
+</div>
+<div class="row">
+  <div class="span6"><%= box.description %></div>
+    <div class="span4 offset2 btn-group">    
+    
+    <%= link_to "EDIT", edit_box_path(box), class: "btn btn-mini" %> 
+    <% if current_user.admin? %>
+    <%= link_to "DELETE", box, method: :delete, data: { confirm: "Confirm deletion"}, class: "btn btn-mini btn-danger" %>
+    <% end %>
+  </div>
+</div>
 </li>

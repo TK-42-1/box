@@ -1,0 +1,12 @@
+<li>
+<div class="row">
+  <div class="span3">
+    <%= link_to location.code, location %>
+  </div>
+  <div class="span2 offset7">
+    <% if current_user.admin? %>
+    <%= link_to "DELETE", location, method: :delete, data: { confirm: "Confirm deletion"}, class: "btn btn-mini btn-danger" %>
+    <% end %>
+  </div>
+</div>
+</li>

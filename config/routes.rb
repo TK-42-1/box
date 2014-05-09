@@ -1,4 +1,5 @@
 Boxapp::Application.routes.draw do
+
   root 'static_pages#home'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about', to: "static_pages#about", via: 'get'
@@ -6,7 +7,7 @@ Boxapp::Application.routes.draw do
   match '/signup', to: "users#new", via: 'get'
   match '/signin', to: "sessions#new", via: 'get'
   match '/signout', to: "sessions#destroy", via: 'delete'
-  
+  match '/print', to: "boxes#print", via: 'post'
   resources :users
   resources :boxes do
     member do
@@ -18,6 +19,7 @@ Boxapp::Application.routes.draw do
   end
   resources :companies
   resources :departments
+  resources :locations
   resources :sessions, only: [:new, :create, :destroy]
   
   

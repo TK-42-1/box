@@ -3,6 +3,7 @@ class Box < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
   belongs_to :department 
+  belongs_to :location
   
   validates :description, presence: true
   validates :user_id, presence: true

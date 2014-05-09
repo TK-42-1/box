@@ -1,0 +1,19 @@
+<% provide(:title, @location.code)%>
+<h1><%= @location.code%></h1>
+<div class="delete"><% if current_user.admin? %>
+      <%= link_to "delete", @location, method: :delete, data: { confirm: "Confirm deletion"}%>
+      <% end %></div>
+<% if current_user.admin? %>
+  <div class="row">
+    <div class="span6 offset1">
+      <%= render 'form' %>
+    </div>
+<% else%>
+  <div class="row">
+    <ul>
+      <% @location.boxes.each do |box| %>
+        <li><%= box.id %> <%= box.company %></li>
+      <% end %>
+    </ul>
+  <% end %>     
+</div>

@@ -1,0 +1,11 @@
+<%= simple_form_for @location, html: { class: 'form-horizontal' } do |f| %>
+  <%= render 'shared/location_error_messages' %>
+
+  <%= f.input :room, required: false %>
+  <%= f.input :row, required: false %>
+  <%= f.input :section, required: false %>
+  <%= f.input :shelf, required: false %>
+  <%= f.input :slot, required: false %>
+  <%= f.button :submit, html: {class: 'center'} %>
+  
+<% end %>

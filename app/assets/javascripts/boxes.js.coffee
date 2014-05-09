@@ -9,5 +9,5 @@ $(document).ready ->
       type: "GET"
       data:
         company_id: $('.company_select option:selected').val()
-			success: (options) ->
-					$('.department_select').append.html(options)
+      success: (options) ->
+          $('.department_select').html(options)

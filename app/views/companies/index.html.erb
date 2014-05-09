@@ -1,10 +1,10 @@
-<% provide(:title, 'All companies')%>
-<h1>All companies</h1>
+<% provide(:title, 'Companies')%>
+<h1>Companies</h1>
 
 <%= will_paginate %>
 
-<ul class="index">
+<div class="index">
 	<%= render @companies %>
-</ul>
+</div>
 
 <%= will_paginate %>

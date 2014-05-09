@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502151838) do
+ActiveRecord::Schema.define(version: 20140509141904) do
 
   create_table "boxes", force: true do |t|
     t.string   "description"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140502151838) do
     t.datetime "updated_at"
     t.integer  "company_id"
     t.integer  "department_id"
+    t.string   "location_id"
   end
 
   create_table "companies", force: true do |t|
@@ -45,9 +46,9 @@ ActiveRecord::Schema.define(version: 20140502151838) do
     t.datetime "updated_at"
   end
 
-  add_index "divisions", ["company_id"], name: "index_divisions_on_company_id"
-  add_index "divisions", ["department_id", "company_id"], name: "index_divisions_on_department_id_and_company_id", unique: true
-  add_index "divisions", ["department_id"], name: "index_divisions_on_department_id"
+  add_index "divisions", ["company_id"], name: "index_divisions_on_company_id", using: :btree
+  add_index "divisions", ["department_id", "company_id"], name: "index_divisions_on_department_id_and_company_id", unique: true, using: :btree
+  add_index "divisions", ["department_id"], name: "index_divisions_on_department_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "code"
@@ -73,8 +74,8 @@ ActiveRecord::Schema.define(version: 20140502151838) do
     t.string   "department"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
-  add_index "users", ["username"], name: "index_users_on_username"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end

@@ -4,7 +4,9 @@
 <%= will_paginate %>
 
 <ul class="index">
-	<%= render @boxes %>
+  <%= form_tag '/print', method: 'post', action: "print", multipart: true  %>
+  <%= button_to "Print", action: "print" %>
+  <%= render @boxes %>
 </ul>
 
 <%= will_paginate %>
