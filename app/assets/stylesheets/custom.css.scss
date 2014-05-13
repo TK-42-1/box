@@ -232,13 +232,13 @@ font-style: normal;
 #print-box {
 
 	width: 816px;
-	font-size:400%;
+	font-size:350%;
 	font-weight:bold;
 }
 
 .barcode { 
 	font-family:Code39AzaleaFont;
-	font-size:250%;
+	font-size:150pt;
 	line-height:100%;
 }
 
@@ -249,6 +249,7 @@ font-style: normal;
 .small-words {
 	font-size:20%;
 	line-height:10%;
+  padding-top: 5px
 }
 
 #print-list {
@@ -265,13 +266,14 @@ font-style: normal;
 
 .labels { 
 	margin-top:0in;
-	width: 816px;
+	width: 8.5in;
+  height:5.5in;
 	line-height:100%;
-	font-size:600%;
+	font-size:4em;
 	font-weight:bold;
 }
 
 .label1 {position: fixed;
 left:1in;top:.5in;}
 .label2 {position: fixed;
-left:1in;top:6in;}
+left:1in;top:6.25in;}

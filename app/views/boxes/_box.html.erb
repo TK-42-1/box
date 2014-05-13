@@ -1,7 +1,7 @@
 <li>
 <div class="row">
   <div class="span4">
-    <%= check_box_tag :print, box.id, false, multiple: true %>
+    <%= check_box_tag "print[]", box.id, false %>
     <%= link_to box.id, box, class: "label" %> <%= link_to box.company.name, box.company %> <%= box.department.name %> 
   </div>
   <div class="span2"><%= box.month.rjust(2, '0') %>-<%= box.year %></div>

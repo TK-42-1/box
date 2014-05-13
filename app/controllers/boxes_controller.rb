@@ -48,7 +48,7 @@ class BoxesController < ApplicationController
   end
   
   def print
-    @boxes = Box.params[:print]
+    @boxes = Box.find(params[:print])
     @print = true
     render :print
   end
