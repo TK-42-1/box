@@ -16,6 +16,7 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rails-collection'
 gem 'capistrano-rvm'
+gem 'net-ssh'
 
 
 group :development, :test do

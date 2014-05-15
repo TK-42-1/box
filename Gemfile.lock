@@ -252,6 +252,7 @@ DEPENDENCIES
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
   mysql
+  net-ssh
   rails (= 4.0.4)
   rails_12factor (= 0.0.2)
   rename
