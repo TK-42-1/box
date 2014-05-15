@@ -11,14 +11,14 @@ $grayMediumLight: #eaeaea;
 }
 
 /* universal */
-
+@media screen {
 html {
   overflow-y: scroll;
 }
 
 body {
   padding-top: 60px;
-}
+}}
 
 section {
   overflow: auto;
@@ -229,25 +229,30 @@ font-style: normal;
 
 /* printing */
 
-#print-box {
 
-	width: 816px;
-	font-size:350%;
-	font-weight:bold;
+@media print {
+  .body {
+    padding-top: none;
+    padding-bottom: none;}
+  .page-break { 
+    page-break-before: always;
+    page-break-inside: avoid;}
 }
+
 
 .barcode { 
 	font-family:Code39AzaleaFont;
 	font-size:150pt;
 	line-height:100%;
+  padding-bottom: 15px
 }
 
-.destroy {
-	text-align:right;
-}
+.right-align {text-align:right;}
+
+.padded {padding-bottom: 60px;}
 
 .small-words {
-	font-size:20%;
+	font-size:8pt;
 	line-height:10%;
   padding-top: 5px
 }
@@ -263,17 +268,12 @@ font-style: normal;
 }
 
 /* label positioning */
-
-.labels { 
-	margin-top:0in;
-	width: 8.5in;
-  height:5.5in;
-	line-height:100%;
-	font-size:4em;
-	font-weight:bold;
+.label-print {
+  width: 8in;
 }
 
-.label1 {position: fixed;
-left:1in;top:.5in;}
-.label2 {position: fixed;
-left:1in;top:6.25in;}
+.labels { 
+	line-height:100%;
+	font-size:60pt;
+	font-weight:bold;
+}

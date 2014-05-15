@@ -47,6 +47,10 @@ class LocationsController < ApplicationController
       render 'edit'
     end
   end
+
+  def print
+    @location = Location.find(params[:id])
+  end
   
   def destroy
     location.find(params[:id]).destroy

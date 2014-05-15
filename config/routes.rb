@@ -19,7 +19,11 @@ Boxapp::Application.routes.draw do
   end
   resources :companies
   resources :departments
-  resources :locations
+  resources :locations do
+    member do
+      get 'print'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   
   

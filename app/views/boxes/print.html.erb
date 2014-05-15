@@ -1,12 +1,14 @@
-<% @boxes.each do |box| %>
+<div class="label-print">
+	<% @boxes.each do |box| %>
 	<div class="labels">
+		
 		<div class="row small-words">
 			<div class="span2">Box Number</div>
-			<div class="span3 offset7 destroy">Destroy After</div>
+			<div class="span3 offset4 right-align">Destroy After</div>
 		</div>
 		<div class="row">
 			<div class="span2"><%= box.id %></div>
-			<div class="span3 offset5 destroy"><%= box.destroy_by %></div>
+			<div class="span3 offset4 right-align"><%= box.destroy_by %></div>
 		</div>
 		<div class="row small-words">
 			<div class="span12">Company</div>
@@ -24,11 +26,12 @@
 			<div class="span12">Date of Contents</div>
 		</div>
 		<div class="row">
-			<div class="span12"><%= box.month %> - <%= box.year %></div>
+			<div class="span12"><%= box.month %>/<%= box.year %></div>
 		</div>
 		<div class="row">
-			<div class="span12"><div class="barcode center">*<%= box.id.to_s.rjust(8, '0')%>*</div></div>
-		</div>	 
+			<div class="span12"><div class="barcode">*<%= box.id.to_s.rjust(8, '0')%>*</div></div>
+		</div>
+		<div class="<%= cycle("padded", "page-break") -%>"></div>
 	</div>
-<% end %>
-
+	<% end %>
+</div>
