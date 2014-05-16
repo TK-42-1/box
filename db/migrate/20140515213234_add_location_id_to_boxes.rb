@@ -1,5 +1,5 @@
 class AddLocationIdToBoxes < ActiveRecord::Migration
   def change
-    add_column :box, :location_id, :string
+    rename_column :boxes, :location_id, :location_code
   end
 end

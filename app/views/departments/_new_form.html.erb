@@ -2,6 +2,8 @@
 	<%= render 'shared/department_error_messages' %>
 
 	<%= f.input :name, required: false %>
-	<%= f.button :submit, html: {class: 'center'} %>
+	<div class="offset2">
+  <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
 	
 <% end %>
