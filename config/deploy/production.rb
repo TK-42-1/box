@@ -14,7 +14,6 @@ role :db,  %w{deploy@10.2.2.151}
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-# 
 set :stage, :production
 server '10.2.2.151', user: 'deploy', roles: %w{web app}
 
