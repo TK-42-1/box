@@ -6,6 +6,6 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :divisions
   accepts_nested_attributes_for :departments
   
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   
 end

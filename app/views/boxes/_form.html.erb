@@ -11,9 +11,9 @@
 	
 	<%= f.input :month, collection: [['January', 1], ['February', 2], ['March', 3], ['April', 4], ['May', 5], ['June', 6], ['July', 7], ['August', 8 ] , ['September', 9 ], ['October', 10], ['November', 11], ['December', 12], ['Fiscal Year', 'FY']] %>
 	
-	<%= f.input :year, collection: (Time.zone.now.year - 3)..(Time.zone.now.year + 1) %>
+	<%= f.input :year, collection: (Time.zone.now.year - 5)..(Time.zone.now.year + 1) %>
 	
-	<%= f.input :destroy_by, collection: (Time.zone.now.year)..(Time.zone.now.year + 10) %>
+	<%= f.input :destroy_by, collection: (Time.zone.now.year)..(Time.zone.now.year + 15) %>
 	
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<br/>	
