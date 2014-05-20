@@ -16,7 +16,7 @@ class BoxesController < ApplicationController
     @box = Box.new(box_params)
     if @box.save
       flash[:success] = "Box successfully created"
-      redirect_to @box
+      redirect_to new_box_path
     else
       render 'new'
     end
