@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515213234) do
+ActiveRecord::Schema.define(version: 20140519193820) do
 
   create_table "boxes", force: true do |t|
     t.string   "description"

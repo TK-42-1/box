@@ -12,13 +12,16 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 @media screen {
-html {
-  overflow-y: scroll;
+  html {
+    overflow-y: scroll;
+  }
+
+  body {
+    padding-top: 60px;
+  }
 }
 
-body {
-  padding-top: 60px;
-}}
+
 
 section {
   overflow: auto;
@@ -178,53 +181,12 @@ font-style: normal;
 
 /* box show page */
 
-.box-company {
-  font-size: 3em;
-  letter-spacing: -2px;
-	margin-bottom: 15px; 
-	font-weight:bold; 
-}
-
-.box-department {
-  font-size: 2.5em;
-  letter-spacing: -1px;
-  margin-bottom: 15px;
-  font-weight: normal;
-  color: $grayLight;
-}
-
-.date {
-	font-size: 3em;
-  letter-spacing: -2px;
-	text-align: right;
-}
-
-.destroy-by {
-	font-size: 1.5em;
-  letter-spacing: -1px;
-	font-weight:bold;
-	color:red;	
-	text-align: right;
-	vertical-align: text-top;
-}
-
-.box-description {
-	font-size: 1.5em;
-	letter-spacing: -1px;
-}
-
-.box-edit{
-	font-size: 1.5em;
-	letter-spacing: -1px;
-}
-
-.box-delete {
-	font-size: 1.5em;
-  letter-spacing: -1px;
-	font-weight:bold;
-	color:red;	
-	text-align: right;
-  a { color: red; }
+.show {
+  font-size: 1.5em;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    color: white;}
 }
 
 /* printing */

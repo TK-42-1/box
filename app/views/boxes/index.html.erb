@@ -1,12 +1,30 @@
 <% provide(:title, 'All boxes')%>
 <h1>All boxes</h1>
 
-<%= will_paginate %>
 
-<ul class="index">
-  <%= form_tag '/print', method: 'post', action: "print"  %>
-  <%= button_tag "Print" %>
+
+<%= will_paginate @boxes %>
+<fieldset>
+  <%= form_tag '/print', method: 'post', action: "print"  %>  
+  <%= button_tag "Print", class: 'btn btn-warning' %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= check_box_tag 'selectall', '0', false, class: 'checkall btn' %></th>
+    <th>ID</th>
+    <th>Company</th>
+    <th>Department</th>
+    <th>Month</th>
+    <th>Year</th>
+    <th>Description</th>
+    <th>Destroy</th>
+  </tr>
+  </thead>
+  <tbody>
   <%= render @boxes %>
-</ul>
+  </tbody>
+</table>
+<%= button_tag "Print", class: 'btn btn-warning' %>
+</fieldset>
+<%= will_paginate @boxes %>
 
-<%= will_paginate %>

@@ -5,7 +5,7 @@ class Box < ActiveRecord::Base
   belongs_to :department 
   belongs_to :location
   
-  validates :description, presence: true
+  validates :description, presence: true, length: {maximum: 45}
   validates :user_id, presence: true
   validates :company_id, presence: true
   validates :department_id, presence: true

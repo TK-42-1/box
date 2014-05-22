@@ -3,7 +3,7 @@ class BoxesController < ApplicationController
   before_action :admin_user, only: :destroy
   
   def index
-    @boxes = Box.paginate(page: params[:page])
+    @boxes = Box.paginate(page: params[:page], per_page: '25').order('id ASC')
     @current = current_user
   end
   

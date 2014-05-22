@@ -16,3 +16,7 @@ ready = ->
 
 $(document).ready(ready)
 $(document).on('page:load', ready)          
+
+$ ->
+  $(".checkall").on "click", ->
+    $(this).closest("fieldset").find(":checkbox").prop "checked", @checked

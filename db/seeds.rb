@@ -7,3 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(username: 'admin', name: 'Admin', email: 'a_turner@tetco.com', password: 'admin', password_confirmation: 'admin', admin: true)
+Company.create!(name: 'TETCO')
+Company.create!(name: 'Barbarosa Foods')
+Company.create!(name: 'Alamo City Truck')
+Company.create!(name: 'United Pump')
+Department.create!(name: 'Accounts Payable')
+Department.create!(name: 'Accounts Receivable')
+Department.create!(name: 'Store Packages')
+Department.create!(name: 'Non Merch Invoices')

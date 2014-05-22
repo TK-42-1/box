@@ -1,24 +1,20 @@
-<div class="row">
-	<div class="box-company span6"><%= @box.company.name %></div>
-	<div class="date span3 offset3"><%= @box.month.rjust(2, '0') %>-<%= @box.year %></div>
-</div>
-<div class="row">
-	<div class="box-department span6"><%= @box.department.name %></div>
-	<div class="destroy-by span6 offset">DESTROY BY: <%= @box.destroy_by %></div>
-</div>
-<div class="row">
-	<div class="box-description span12"><%= @box.description %></div>
-</div>
-<div class="row">
-	<div class="box-edit span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
-	<div class="box-edit span1"><%= link_to "PRINT", print_box_path(@box) %></div>
-	<div class="box-delete span3 offset7">	
+<div class="show">
+<div class="row"><div class="span2">ID:<%= @box.id %></div></div>
+	<div class="row">
+		<div class="span4"><%= @box.company.name %></div>
+		<div class="span6"><%= @box.department.name %></div>
+		<div class="btn btn-mini btn-primary span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
+		
+	</div>
+	<div class="row">
+		<div class="box-description span10"><%= @box.description %></div>
+		<div class="btn btn-mini btn-warning span1"><%= link_to "PRINT", print_box_path(@box) %></div>
+	</div>
+	<div class="row">
+		<div class="span4"><%= @box.month.rjust(2, '0') %>-<%= @box.year %> </div>
+		<div class="span6">DESTROY: <%= @box.destroy_by %></div>
 		<% if current_user.admin? %>
-		<%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%>
+			<div class="btn btn-mini btn-danger span1"><%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%></div>
 		<% end %>
 	</div>
 </div>
-
-
-
-	
