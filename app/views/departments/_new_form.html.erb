@@ -2,8 +2,9 @@
 	<%= render 'shared/department_error_messages' %>
 
 	<%= f.input :name, required: false %>
-	<div class="offset2">
+  <%= f.input :retain, placeholder: '# of years to retain' %>
+  <%= f.input :indef, as: :boolean %>
+  <div class="offset2">
   <%= f.button :submit, class: "btn btn-primary" %>
   </div>
-	
 <% end %>

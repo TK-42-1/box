@@ -2,7 +2,9 @@
 	<%= render 'shared/department_error_messages' %>
 
 	<%= f.input :name, required: false %>
-	<%= f.association :companies, as: :check_boxes %>
+  <%= f.input :retain, placeholder: '# of years to retain' %>
+  <%= f.input :indef, as: :boolean %>
+  <%= f.association :companies, as: :check_boxes %>
 	<div class="offset2">
   <%= f.button :submit, class: "btn btn-primary" %>
   </div>

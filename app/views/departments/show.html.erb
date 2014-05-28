@@ -1,13 +1,12 @@
 <% provide(:title, @department.name)%>
 <h1><%= @department.name%></h1>
-<div class="delete"><% if current_user.admin? %>
-			<%= link_to "delete", @department, method: :delete, data: { confirm: "Confirm deletion"}%>
-			<% end %></div>
+<div class="show">
 <% if current_user.admin? %>
 	<div class="row">
 		<div class="span6 offset1">
 			<%= render 'form' %>
 		</div>
+	</div>
 <% else%>
 	<div class="row">
 		<ul>
@@ -15,5 +14,6 @@
 				<li><%= company.name %></li>
 			<% end %>
 		</ul>
-	<% end %>			
+	</div>
+<% end %>
 </div>

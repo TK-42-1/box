@@ -54,6 +54,7 @@ class DepartmentsController < ApplicationController
     redirect_to departments_path
   end
   
+
   private
 
   def department_params

@@ -1,5 +1,6 @@
 class Box < ActiveRecord::Base
-    
+  before_validation :create_destroy_by
+
   belongs_to :user
   belongs_to :company
   belongs_to :department 
@@ -12,5 +13,15 @@ class Box < ActiveRecord::Base
   validates :month, presence: true
   validates :year, presence: true
   validates :destroy_by, presence: true
-  
+
+  def create_destroy_by
+    dept = Department.find(department_id)
+    if dept.retain == 'INDEF'
+      destroy_by = 'Indefinite'
+      self.destroy_by = destroy_by
+    else
+      destroy_by = year.to_i + dept.retain.to_i
+      self.destroy_by = destroy_by
+    end
+  end
 end
