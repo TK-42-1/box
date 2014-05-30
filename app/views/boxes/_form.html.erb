@@ -1,8 +1,6 @@
 <%= simple_form_for(@box) do |f| %>
 	<%= render 'shared/box_error_messages' %>
 
-	<%= f.input :description %>
-			
 	<%= f.label :company_id, 'Company' %>
 	<%= f.collection_select :company_id, Company.all, :id, :name, {:prompt => "--  Select Company --"}, {:class => 'company_select'} %>
 	
@@ -11,7 +9,9 @@
 	
 	<%= f.input :month, collection: [['January', 1], ['February', 2], ['March', 3], ['April', 4], ['May', 5], ['June', 6], ['July', 7], ['August', 8 ] , ['September', 9 ], ['October', 10], ['November', 11], ['December', 12], ['Fiscal Year', 'FY']] %>
 	
-	<%= f.input :year, collection: (Time.zone.now.year - 5)..(Time.zone.now.year + 1) %>
+	<%= f.input :year, collection: (Time.zone.now.year - 8)..(Time.zone.now.year + 1) %>
+	
+	<%= f.input :description %>
 	
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<br/>	

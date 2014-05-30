@@ -1,7 +1,7 @@
 <tr>
   <td><%= check_box_tag "print[]", box.id, false %></td>
   <td><%= link_to box.id, box %></td>
-  <td><%= link_to box.company.name, box.company %></td>
+  <td><%= box.company.name %></td>
   <td><%= box.department.name %></td>
   <td><%= box.month.rjust(2, '0') %></td>
   <td><%= box.year %></td>
