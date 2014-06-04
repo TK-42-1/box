@@ -24,4 +24,12 @@ class Box < ActiveRecord::Base
       self.destroy_by = destroy_by
     end
   end
+
+  def self.search(search)
+    if search
+      where('description LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
 end

@@ -2,14 +2,16 @@ class BoxesController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :admin_user, only: :destroy
   
+  helper_method :sort_column, :sort_direction
   def index
-    @boxes = Box.paginate(page: params[:page], per_page: 25).order('id ASC')
+    @boxes = Box.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 25)
     @current = current_user
   end
   
   def new
     @box = Box.new
     @company = Company.all
+    @next = Box.last.id.to_i + 1
   end
   
   def create
@@ -63,5 +65,13 @@ class BoxesController < ApplicationController
   
   def box_params
     params.require(:box).permit(:description, :month, :year, :destroy_by, :user_id, :company_id, :department_id)
+  end
+
+  def sort_column
+    Box.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
