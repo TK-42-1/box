@@ -1,5 +1,4 @@
 class CompaniesController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :admin_user, only: [:destroy, :children]
 
   def index

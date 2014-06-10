@@ -5,9 +5,9 @@
 			<nav>
 				<ul class="nav pull-right">
 					
-					<% if signed_in? %>
+					<% if user_signed_in? %>
 						<li><%= link_to "Home", current_user %></li>
-							<% if admin? %>
+							<% if current_user.admin? %>
 								<li id="fat-menu" class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									Companies <b class="caret"></b>
@@ -19,7 +19,7 @@
 							<% else %>
 									<li><%= link_to "Companies", companies_path %></li>
 							<% end %>
-							<% if admin? %>
+							<% if current_user.admin? %>
 								<li id="fat-menu" class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									Departments <b class="caret"></b>
@@ -31,7 +31,7 @@
 							<% else %>
 									<li><%= link_to "Departments", departments_path %></li>
 							<% end %>
-							<% if admin? %>
+							<% if current_user.admin? %>
 								<li id="fat-menu" class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									Locations <b class="caret"></b>
@@ -52,22 +52,22 @@
 									<li><%= link_to "Create", new_box_path %></li>
 								</ul>
 						</li>
-					<% if admin? %>
-						<li id="fat-menu" class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Users <b class="caret"></b>
-							</a>
-							<ul class="dropdown-menu">
-								<li><%= link_to "Index", users_path %></li>
-								<li><%= link_to "Create", signup_path %></li>
-								<li class="divider"></li>
-								<li><%= link_to "Settings", edit_user_path(current_user) %></li>
-							</ul>
-					<% end %>
-						<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+						<% if current_user.admin? %>
+							<li id="fat-menu" class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									Users <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><%= link_to "Index", users_path %></li>
+									<li><%= link_to "Create", new_user_registration_path %></li>
+									<li class="divider"></li>
+									<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+								</ul>
+						<% end %>
+							<li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
 					<% else %>
 						<li><%= link_to "Home", root_path %></li>
-						<li><%= link_to "Sign in", signin_path %></li>
+						<li><%= link_to "Sign in", new_user_session_path %></li>
 					<% end %>
 				</ul>
 			</nav>

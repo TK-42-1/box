@@ -1,5 +1,4 @@
 class BoxesController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :admin_user, only: :destroy
   
   helper_method :sort_column, :sort_direction
