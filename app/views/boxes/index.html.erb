@@ -4,7 +4,6 @@
 <%= form_tag  boxes_path, method: 'get'  do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
-  <%= select_tag :search, options_from_collection_for_select(@boxes, company.id, company.name ), include_blank: true %> 
   <%= text_field_tag :search , params[:search], class: "input-xxlarge" %>
   <%= submit_tag "Search", name: nil, class: "btn" %>
 <% end %>
