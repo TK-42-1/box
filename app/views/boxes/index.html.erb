@@ -1,21 +1,12 @@
 <% provide(:title, 'All boxes')%>
-<h1>All boxes</h1>
+<h1><%= link_to "All boxes", boxes_path %></h1>
 <div class="input-append">
 <%= form_tag  boxes_path, method: 'get'  do %>
   <%= hidden_field_tag :direction, params[:direction] %>
   <%= hidden_field_tag :sort, params[:sort] %>
-  <%= hidden_field_tag :filter, params[:filter] %>
   <%= text_field_tag :search , params[:search], class: "input-xxlarge" %>
+  <%= collection_select :filter, params[:filter], Company.all, :id, :name, {:include_blank => false }, {:name => 'filter', :class => "input-medium"}  %>
   <%= submit_tag "Search", name: nil, class: "btn" %>
-<% end %>
-</div>
-<div class="input-append">
-<%= form_tag  boxes_path, method: 'get'  do %>
-  <%= hidden_field_tag :direction, params[:direction] %>
-  <%= hidden_field_tag :sort, params[:sort] %>
-  <%= hidden_field_tag :search, params[:search] %>
-  <%= collection_select :filter, params[:filter], Company.all, :id, :name, {:include_blank => false }, {:name => 'filter'}  %>
-  <%= submit_tag "Filter", name: nil, class: "btn" %>
 <% end %>
 </div>
 
