@@ -32,4 +32,12 @@ class Box < ActiveRecord::Base
       scoped
     end
   end
+
+  def self.filter(filter)
+    if filter
+      where('company_id = ?', "#{filter}")
+    else
+      scoped
+    end
+  end
 end
