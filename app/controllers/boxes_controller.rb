@@ -53,6 +53,12 @@ class BoxesController < ApplicationController
     @print = true
     render :print
   end
+
+  def checkout
+
+    @boxes = @boxes = Box.filter(params[:filter]).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 25) || Box.find(params[:print])
+    @user = current_user
+  end
   
   def update_departments
     @company = Company.find(params[:company_id])
