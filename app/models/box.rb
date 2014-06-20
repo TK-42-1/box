@@ -4,7 +4,7 @@ class Box < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
   belongs_to :department 
-  belongs_to :location
+  belongs_to :location, foreign_key: :code, primary_key: :id
   
   validates :description, presence: true, length: {maximum: 45}
   validates :user_id, presence: true
