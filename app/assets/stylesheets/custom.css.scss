@@ -165,43 +165,16 @@ input {
 
 /* sort arrows */
 
-.asc:after {  content: url(/assets/asc.gif);}
-.desc:after { content: url(/assets/desc.gif);}
+.asc:after {  content: image-url("/assets/asc.gif");
+              vertical-align: middle;}
+.desc:after { content: image-url("/assets/desc.gif");
+              vertical-align: middle;}
 
- /* index lists */
-
-.index {
-
-  list-style: none;
-
-  margin: 0;
-
-  li {
-
-    overflow: auto;
-
-    padding: 2px 0;
-
-    border-top: 1px solid $grayLighter;
-
-    &:lastchild {
-
-      borderbottom: 1px solid $grayLighter;
-
-    }
-
-  }
-
-  .delete { 
-
-  font-weight: bold;
-
-  color: red;
-
-  }
-
+ .userpage {
+  h1 {  text-align: left;
+        margin-bottom: 5px; }
+  h2 {  margin-bottom: 5px; }
 }
-
 /* barcode */
 
 @font-face

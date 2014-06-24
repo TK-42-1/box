@@ -37,6 +37,13 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @current = current_user
+    # if current_user?(@user)  
+    #   render 'show'
+    # else
+    #   flash[:error] = "Unauthorized access"
+    #   redirect_to @current
+    # end
   end
   
   def edit

@@ -9,11 +9,17 @@
 	
 	<%= f.label :email %>
 	<%= f.text_field :email %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+	
+	<%= f.label :password_confirmation, "Confirmation" %>
+	<%= f.password_field :password_confirmation %>
 	
 	<%= f.label :admin, "Admin" %>
 	<%= f.check_box :admin %>
 	<br/>	
 	<br/>	
-	<%= f.submit "Save", class: "btn btn-primary" %>
-	<%= link_to "Change password", edit_user_registration_path , class: "btn btn-primary" %>
+	<%= f.submit "Create", class: "btn btn-primary" %>
+	
 <% end %>
