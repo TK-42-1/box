@@ -8,4 +8,11 @@ class Company < ActiveRecord::Base
   
   validates :name, presence: true, length: { maximum: 20 }
   
+  def self.search(search)
+    if search.blank?
+      scoped
+    else
+      where('name LIKE ?', "%#{search}%")
+    end
+  end
 end

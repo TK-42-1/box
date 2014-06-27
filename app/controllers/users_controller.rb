@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
+  helper_method :sort_column, :sort_direction
   
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 30)
     @current = current_user
     if @current.admin? 
       render 'index'
@@ -74,6 +75,15 @@ class UsersController < ApplicationController
   end
   
   private
+
+
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
   
   def user_params
     params.require(:user).permit(:username, :name, :email, :password, :password_confirmation, :admin)

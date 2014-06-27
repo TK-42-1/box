@@ -1,10 +1,27 @@
 <% provide(:title, 'Companies')%>
 <h1>Companies</h1>
 
-<%= will_paginate %>
-
-<div class="index">
-	<%= render @companies %>
+<div class="input-append">
+<%= form_tag  companies_path, method: 'get'  do %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <%= text_field_tag :search , params[:search], class: "input-xxlarge" %>
+  <%= submit_tag "Search", name: nil, class: "btn" %>
+<% end %>
 </div>
 
-<%= will_paginate %>
+<%= will_paginate @companies, previous_label: '&laquo;', next_label: '&raquo;', class: 'pagination pagination-centered' %>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= sortable "name" %></th>
+      <th>Edit</th>
+      <th>Delete</th>
+     </tr>
+  </thead>
+    <tbody>
+      <%= render @companies %>
+    </tbody>
+</table>
+
+<%= will_paginate @companies , previous_label: '&laquo;', next_label: '&raquo;', class: 'pagination pagination-centered' %>

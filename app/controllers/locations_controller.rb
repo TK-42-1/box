@@ -1,8 +1,9 @@
 class LocationsController < ApplicationController
   before_action :admin_user, only: [:destroy, :children]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @locations = Location.paginate(page: params[:page])
+    @locations = Location.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 30)
     @current = current_user
   end
 
@@ -58,6 +59,14 @@ class LocationsController < ApplicationController
   end
   
   private
+
+  def sort_column
+    Location.column_names.include?(params[:sort]) ? params[:sort] : "code"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
   def location_params
     params.require(:location).permit!

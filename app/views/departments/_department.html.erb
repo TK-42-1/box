@@ -1,12 +1,11 @@
-<li>
-<div class="row">
-  <div class="span3">
-	  <%= link_to department.name, department %>
-  </div>
-  <div class="span2 offset7">
-  	<% if current_user.admin? %>
-    <%= link_to "DELETE", department, method: :delete, data: { confirm: "Confirm deletion"}, class: "btn btn-mini btn-danger" %>
-  	<% end %>
-  </div>
-</div>
-</li>
+<tr>
+  <td><%= link_to department.name, department %></td>
+  <td><%= link_to department.retain, department %></td>
+  <% if current_user.admin? %>
+    <td><%= link_to "EDIT", edit_department_path(department), class: "btn btn-mini" %></td>
+    <td><%= link_to "DELETE", department, method: :delete, data: { confirm: "Confirm deletion"}, class: "btn btn-mini btn-danger" %></td>
+  <% else %>
+    <td></td>
+    <td></td>
+  <% end %>
+</tr>

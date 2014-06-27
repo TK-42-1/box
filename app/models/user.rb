@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true
   validates :username, presence: true, uniqueness: {case_sensitive: false}
+
+  def self.search(search)
+    if search.blank?
+      scoped
+    else
+      where('name LIKE ? or username LIKE ?', "%#{search}%", "%#{search}%")
+    end
+  end
 end

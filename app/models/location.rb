@@ -7,5 +7,13 @@ class Location < ActiveRecord::Base
   validates :section, presence: true
   validates :shelf, presence: true
   validates :slot, presence: true
+  
+  def self.search(search)
+    if search.blank?
+      scoped
+    else
+      where('code LIKE ?', "%#{search}%")
+    end
+  end
 
 end

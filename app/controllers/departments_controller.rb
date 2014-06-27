@@ -1,8 +1,9 @@
 class DepartmentsController < ApplicationController
   before_action :admin_user, only: [:destroy, :children]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @departments = Department.paginate(page: params[:page])
+    @departments = Department.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 30)
     @current = current_user
   end
 
@@ -55,6 +56,14 @@ class DepartmentsController < ApplicationController
   
 
   private
+
+  def sort_column
+    Department.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
   def department_params
     params.require(:department).permit!

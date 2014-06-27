@@ -13,4 +13,12 @@ class Department < ActiveRecord::Base
       self.retain = retain
     end
   end
+
+  def self.search(search)
+    if search.blank?
+      scoped
+    else
+      where('name LIKE ? OR retain LIKE ?', "%#{search}%", "%#{search}%")
+    end
+  end
 end
