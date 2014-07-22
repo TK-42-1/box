@@ -165,9 +165,9 @@ input {
 
 /* sort arrows */
 
-.asc:after {  content: image-url("/assets/asc.gif");
+.asc:after {  content: url("/assets/asc.gif");
               vertical-align: middle;}
-.desc:after { content: image-url("/assets/desc.gif");
+.desc:after { content: url("/assets/desc.gif");
               vertical-align: middle;}
 
  .userpage {
