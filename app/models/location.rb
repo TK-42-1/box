@@ -15,5 +15,4 @@ class Location < ActiveRecord::Base
       where('code LIKE ?', "%#{search}%")
     end
   end
-
-end
+end 

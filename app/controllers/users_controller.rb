@@ -39,12 +39,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @current = current_user
-    # if current_user?(@user)  
-    #   render 'show'
-    # else
-    #   flash[:error] = "Unauthorized access"
-    #   redirect_to @current
-    # end
   end
   
   def edit
@@ -72,6 +66,12 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_path
+  end
+
+  def password_reset
+    User.find(params[:id]).send_reset_password_instructions
+    flash[:success] = "Password reset email sent"
+    redirect_to user_path
   end
   
   private

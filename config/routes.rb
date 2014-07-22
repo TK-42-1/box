@@ -6,7 +6,11 @@ Boxapp::Application.routes.draw do
   match '/about', to: "static_pages#about", via: 'get'
   match '/contact', to: "static_pages#contact", via: 'get'
   match '/print', to: "boxes#print", via: 'post'
-  resources :users
+  resources :users do
+    member do
+      get 'password_reset'
+    end
+  end
   resources :boxes do
     member do
       get 'print'

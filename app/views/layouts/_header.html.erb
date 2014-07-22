@@ -7,51 +7,10 @@
 					
 					<% if user_signed_in? %>
 						<li><%= link_to "Home", current_user %></li>
-							<% if current_user.admin? %>
-								<li id="fat-menu" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									Companies <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li><%= link_to "Index", companies_path %></li>
-									<li><%= link_to "Create", new_company_path %></li>
-								</ul>
-							<% else %>
-									<li><%= link_to "Companies", companies_path %></li>
-							<% end %>
-							<% if current_user.admin? %>
-								<li id="fat-menu" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									Departments <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li><%= link_to "Index", departments_path %></li>
-									<li><%= link_to "Create", new_department_path %></li>
-								</ul>
-							<% else %>
-									<li><%= link_to "Departments", departments_path %></li>
-							<% end %>
-							<% if current_user.admin? %>
-								<li id="fat-menu" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									Locations <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li><%= link_to "Index", locations_path %></li>
-									<li><%= link_to "Create", new_location_path %></li>
-								</ul>
-							<% else %>
-									<li><%= link_to "Locations", locations_path %></li>
-							<% end %>
-							<li id="fat-menu" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									Boxes <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li><%= link_to "Index", boxes_path %></li>
-									<li><%= link_to "Create", new_box_path %></li>
-								</ul>
-						</li>
+						<li><%= link_to "Companies", companies_path %></li>
+						<li><%= link_to "Departments", departments_path %></li>
+						<li><%= link_to "Locations", locations_path %></li>
+						<li><%= link_to "Boxes", boxes_path %></li>
 						<% if current_user.admin? %>
 							<li id="fat-menu" class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -59,9 +18,7 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li><%= link_to "Index", users_path %></li>
-									<li><%= link_to "Create", new_user_registration_path %></li>
-									<li class="divider"></li>
-									<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+									<li><%= link_to "Create", new_user_path %></li>
 								</ul>
 						<% end %>
 							<li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
