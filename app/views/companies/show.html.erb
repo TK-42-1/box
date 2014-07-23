@@ -1,19 +1,24 @@
 <% provide(:title, @company.name)%>
 <h1><%= @company.name%></h1>
-<div class="delete"><% if current_user.admin? %>
-			<%= link_to "delete", @company, method: :delete, data: { confirm: "Confirm deletion"}%>
-			<% end %></div>
 <% if current_user.admin? %>
 	<div class="row">
 		<div class="span6 offset1">
 			<%= render 'form' %>
 		</div>
 <% else%>
-	<div class="row">
-		<ul>
-			<% @company.departments.each do |department| %>
-				<li><%= department.name %></li>
-			<% end %>
-		</ul>
-	<% end %>			
-</div>
+	<h2 class="center">Available retention departments</h2>
+	<table class="table">
+	<thead>
+		<th>Department</th>
+		<th>Retention Period</th>
+	</thead>
+	<tbody>
+		<% @company.departments.each do |department| %>
+			<tr>
+				<td><%= department.name %></td> 
+				<td><%= department.retain %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	<% end %>

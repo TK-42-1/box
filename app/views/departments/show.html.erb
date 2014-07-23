@@ -1,6 +1,5 @@
 <% provide(:title, @department.name)%>
 <h1><%= @department.name%></h1>
-<div class="show">
 <% if current_user.admin? %>
 	<div class="row">
 		<div class="span6 offset1">
@@ -8,12 +7,17 @@
 		</div>
 	</div>
 <% else%>
-	<div class="row">
-		<ul>
-			<% @department.companies.each do |company| %>
-				<li><%= company.name %></li>
-			<% end %>
-		</ul>
-	</div>
-<% end %>
-</div>
+<h2 class="center">Assigned companies</h2>
+	<table class="table">
+	<thead>
+		<th>Companies</th>
+	</thead>
+	<tbody>
+		<% @department.companies.each do |company| %>
+			<tr>
+				<td><%= company.name %></td> 
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	<% end %>

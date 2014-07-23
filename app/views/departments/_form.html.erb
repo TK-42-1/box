@@ -6,7 +6,7 @@
   <%= f.input :indef, as: :boolean %>
   <%= f.association :companies, as: :check_boxes %>
 	<div class="offset2">
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-primary" %> <%= link_to "Delete", @department, method: :delete, data: { confirm: "Confirm deletion"}, class: "btn btn-danger" %>
   </div>
 	
 <% end %>

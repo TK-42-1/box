@@ -29,6 +29,9 @@
 			<div class="span12"><%= box.month %>/<%= box.year %></div>
 		</div>
 		<div class="row">
+			<div class="span12"><div class="box-description"><%= box.description %></div></div>
+		</div>
+		<div class="row">
 			<div class="span12"><div class="barcode">*<%= box.id %>*</div></div>
 		</div>
 		<div class="<%= cycle("padded", "page-break") -%>"></div>

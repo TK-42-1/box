@@ -27,7 +27,7 @@ class Box < ActiveRecord::Base
 
   def self.search(search)
     if search.blank?
-      scoped
+      Box.all
     else
       where('description LIKE ?', "%#{search}%")
     end
@@ -35,7 +35,7 @@ class Box < ActiveRecord::Base
 
   def self.filter(filter)
     if filter.blank?
-      scoped
+      Box.all
     else
       where('company_id = ?', "#{filter}")
     end
@@ -43,7 +43,7 @@ class Box < ActiveRecord::Base
 
   def self.deptfilter(deptfilter)
     if deptfilter.blank?
-      scoped
+      Box.all
     else
       where('department_id = ?', "#{deptfilter}")
     end

@@ -1,10 +1,12 @@
 <div class="show">
-<div class="btn-group">
+<div class="row">
 	<div class="btn btn-primary span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
 	<% if current_user.admin? %>
-		<div class="btn btn-danger span1"><%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%></div>
+		<div class="btn btn-danger span1 offeset1"><%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%></div>
 	<% end %>
-</div><br/>
+</div>
+<br/>
+<br/>
 ID:<%= @box.id %><br/>
 <%= @box.company.name %><br/>
 <%= @box.department.name %><br/>
