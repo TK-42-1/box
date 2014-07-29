@@ -13,6 +13,7 @@ ready = ->
         company_id: $('.company_select option:selected').val()
       success: (options) ->
           $('.department_select').html(options)
+
 # requires page to load fully before starting jquery
 $(document).ready(ready)
 $(document).on('page:load', ready)          

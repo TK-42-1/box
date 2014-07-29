@@ -1,6 +1,6 @@
 <% provide(:title, 'All users')%>
 <h1>All users</h1>
-
+<div class="center">
 <div class="input-append">
 <%= form_tag  users_path, method: 'get'  do %>
   <%= hidden_field_tag :direction, params[:direction] %>
@@ -9,7 +9,7 @@
   <%= submit_tag "Search", name: nil, class: "btn" %>
 <% end %>
 </div>
-
+</div>
 <%= will_paginate @users, previous_label: '&laquo;', next_label: '&raquo;', class: 'pagination pagination-centered' %>
   <table class="table table-hover">
   <thead>

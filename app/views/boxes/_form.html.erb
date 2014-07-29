@@ -11,7 +11,7 @@
 	
 	<%= f.input :year, collection: (Time.zone.now.year - 8)..(Time.zone.now.year + 1) %>
 	
-	<%= f.input :description %> <div class="help-block">45 Character Limit</div>
+	<%= f.input :description %> <div class="help-inline">45 Character Limit</div>
 	
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<br/>	

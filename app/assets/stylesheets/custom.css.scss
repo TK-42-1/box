@@ -208,6 +208,11 @@ font-style: normal;
   .page-break { 
     page-break-before: always;
     page-break-inside: avoid;}
+  .hidden {
+    visibility:hidden;}
+  .link {
+    text-decoration: none;
+    color: white;}
 }
 
 

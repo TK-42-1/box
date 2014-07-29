@@ -3,13 +3,16 @@
 		<div class="container">
 			<%= link_to "box tracking", root_path, id: "logo" %>
 			<nav>
-				<ul class="nav pull-right">
-					
+
 					<% if user_signed_in? %>
+						<ul class="nav pull-left">
+							<li><%= link_to current_user.name, current_user %></li>
+						</ul>
+					<ul class="nav pull-right">
+					
 						<li><%= link_to "Boxes", boxes_path %></li>
 						<li><%= link_to "Companies", companies_path %></li>
 						<li><%= link_to "Departments", departments_path %></li>
-						<li><%= link_to "Settings", current_user %></li>
 						<% if current_user.admin? %>
 							<li><%= link_to "Locations", locations_path %></li>
 							<li id="fat-menu" class="dropdown">
@@ -22,9 +25,6 @@
 								</ul>
 						<% end %>
 							<li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
-					<% else %>
-						<li><%= link_to "Home", root_path %></li>
-						<li><%= link_to "Sign in", new_user_session_path %></li>
 					<% end %>
 				</ul>
 			</nav>

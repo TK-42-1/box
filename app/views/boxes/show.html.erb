@@ -1,19 +1,51 @@
-<div class="show">
 <div class="row">
-	<div class="btn btn-primary span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
-	<% if current_user.admin? %>
-		<div class="btn btn-danger span1 offeset1"><%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%></div>
-	<% end %>
+  <div class="span2">Box Number</div>
+  <div class="span3 offset4 right-align">Destroy After</div>
 </div>
-<br/>
-<br/>
-ID:<%= @box.id %><br/>
-<%= @box.company.name %><br/>
-<%= @box.department.name %><br/>
-Description: <%= @box.description %><br/>
-Month: <%= @box.month.rjust(2, '0') %><br/>
-Year: <%= @box.year %> <br/>
-Destroy: <%= @box.destroy_by %><br/>
-Stored by: <%= @box.stored_by %><br/>
-Location: <%= @box.location_code %> <br/>
+<div class="row show">
+  <div class="span2"><%= @box.id %></div>
+  <div class="span3 offset4 right-align"><%= @box.destroy_by %></div>
+</div>
+<div class="row">
+  <div class="span12">Company</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.company.name %></div>
+</div>
+<div class="row">
+  <div class="span12">Department</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.department.name %></div>
+</div>
+<div class="row">
+  <div class="span12">Date of Contents</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.month %>/<%= @box.year %></div>
+</div>
+<div class="row">
+  <div class="span12">Description</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.description %></div>
+</div>
+<div class="row">
+  <div class="span12">Stored by</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.stored_by %></div>
+</div>
+<div class="row">
+  <div class="span12">Location</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.location_code %></div>
+</div>
+<div class="row show">
+  <br/>
+  <div class="btn btn-primary span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
+  <% if current_user.admin? %>
+    <div class="btn btn-danger span1 offeset1"><%= link_to "DELETE", @box, method: :delete, data: { confirm: "Confirm deletion"}%></div>
+  <% end %>
 </div>

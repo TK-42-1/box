@@ -1,7 +1,6 @@
 <div class="label-print">
 	<% @boxes.each do |box| %>
 	<div class="labels">
-		
 		<div class="row small-words">
 			<div class="span2">Box Number</div>
 			<div class="span3 offset4 right-align">Destroy After</div>
@@ -38,3 +37,29 @@
 	</div>
 	<% end %>
 </div>
+<%= javascript_tag do %>
+	setTimeout(function(){
+		print();
+	}, 1000);
+
+	var beforePrint = function() {
+		
+	};
+	var afterPrint = function() {
+		window.location.replace("/boxes");
+	};
+
+	if (window.matchMedia) {
+		var mediaQueryList = window.matchMedia('print');
+		mediaQueryList.addListener(function(mql) {
+			if (mql.matches) {
+				beforePrint();
+			} else {
+				afterPrint();
+			}
+		});
+	}
+
+	window.onbeforeprint = beforePrint;
+	window.onafterprint = afterPrint;
+<% end %>
