@@ -7,7 +7,7 @@
 	<%= f.label  :department_id, 'Department'%>
 	<%= f.collection_select :department_id, Department.all , :id, :name, {:prompt => "--  Select Department --"}, {:class => 'department_select'} %>
 	
-	<%= f.input :month, collection: [['January', 1], ['February', 2], ['March', 3], ['April', 4], ['May', 5], ['June', 6], ['July', 7], ['August', 8 ] , ['September', 9 ], ['October', 10], ['November', 11], ['December', 12], ['Fiscal Year', 'FY']] %>
+	<%= f.input :month, collection: [['January', 1], ['February', 2], ['March', 3], ['April', 4], ['May', 5], ['June', 6], ['July', 7], ['August', 8 ] , ['September', 9 ], ['October', 10], ['November', 11], ['December', 12], ['Fiscal Year', 'FY'], ['Calendar Year', 'CY'], ['First Quarter', 'Q1'], ['Second Quarter', 'Q2'], ['Third Quarter', 'Q3'], ['Fourth Quarter', 'Q4']]  %>
 	
 	<%= f.input :year, collection: (Time.zone.now.year - 8)..(Time.zone.now.year + 1) %>
 	
