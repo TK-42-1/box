@@ -36,12 +36,28 @@
 <div class="row show">
   <div class="span12"><%= @box.stored_by %></div>
 </div>
+<%  if @box.location_code.present? %>
 <div class="row">
   <div class="span12">Location</div>
 </div>
 <div class="row show">
   <div class="span12"><%= @box.location_code %></div>
 </div>
+<div class="row">
+  <div class="span2">Room</div>
+  <div class="span2">Row</div>
+  <div class="span2">Section</div>
+  <div class="span2">Shelf</div>
+  <div class="span2">Slot</div>
+</div>
+<div class="row show">
+  <div class="span2"><%= @location.room %></div>
+  <div class="span2"><%= @location.row %></div>
+  <div class="span2"><%= @location.section %></div>
+  <div class="span2"><%= @location.shelf %></div>
+  <div class="span2"><%= @location.slot %></div>
+</div>
+<% end %>
 <div class="row show">
   <br/>
   <div class="btn btn-primary span1"><%= link_to "EDIT", edit_box_path(@box) %></div>

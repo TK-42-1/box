@@ -25,7 +25,7 @@ class BoxesController < ApplicationController
   
   def show
     @box = Box.find(params[:id])
-    
+    @location = Location.find_by code: @box.location_code
   end
 
   def edit
