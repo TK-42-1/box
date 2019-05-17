@@ -30,8 +30,6 @@ class Box < ActiveRecord::Base
       Box.all
     else
       where('description LIKE ?', "%#{search}%")
-:A
-
     end
   end
 
@@ -45,7 +43,7 @@ class Box < ActiveRecord::Base
 
   def self.deptfilter(deptfilter)
     if deptfilter.blank?
-      Box.all
+      all
     else
       where('department_id = ?', "#{deptfilter}")
     end
@@ -57,12 +55,12 @@ class Box < ActiveRecord::Base
 
   def self.destroy_by_filter(filter)
     return  Box.all if filter.blank?
-    Box.where(destroy_by: filter)
+    where(destroy_by: filter)
   end
 
   def self.destroyed_at_filter(filter)
-    return Box.where('destroyed_at IS NOT NULL') if filter == 'destroyed'
-    return Box.where('destroyed_at IS NULL') if filter == 'not_destroyed'
-    Box.all
+    return where('destroyed_at IS NOT NULL') if filter == 'destroyed'
+    return where('destroyed_at IS NULL Or destroyed_at = 0') if filter == 'not_destroyed'
+    all
   end
 end

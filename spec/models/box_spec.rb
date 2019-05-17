@@ -37,6 +37,8 @@ describe Box do
 
   describe '#destroyed_at_filter' do
     let!(:destroyed) { FactoryGirl.create(:box, destroyed_at: DateTime.now) }
+    let!(:not_destroyed_with_invalid_date) { FactoryGirl.create(:box, destroyed_at: 0) }
+
     before do
      box
      other_box
@@ -51,7 +53,7 @@ describe Box do
     end
 
     it 'returns only not destroyed' do
-      expect(Box.destroyed_at_filter('not_destroyed')).to eq [box, other_box]
+      expect(Box.destroyed_at_filter('not_destroyed').map(&:id).sort).to eq [box, other_box, not_destroyed_with_invalid_date].map(&:id).sort
     end
   end
 end
