@@ -3,7 +3,7 @@ class BoxesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @boxes = Box.filter(params[:filter]).deptfilter(params[:deptfilter]).destroy_by_filter(params[:destroy_by]).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 30)
+    @boxes = Box.filter(params[:filter]).deptfilter(params[:deptfilter]).destroy_by_filter(params[:destroy_by]).destroyed_at_filter(params[:destroyed_at]).search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 30)
     @current = current_user
   end
 

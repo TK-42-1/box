@@ -34,4 +34,24 @@ describe Box do
       expect(Box.destroy_by_filter(other_box.destroy_by.to_s)).to eq [other_box]
     end
   end
+
+  describe '#destroyed_at_filter' do
+    let!(:destroyed) { FactoryGirl.create(:box, destroyed_at: DateTime.now) }
+    before do
+     box
+     other_box
+    end
+
+    it 'returns all boxes' do
+      expect(Box.destroyed_at_filter('')).to eq Box.all
+    end
+
+    it 'returns only destroyed' do
+      expect(Box.destroyed_at_filter('destroyed')).to eq [destroyed]
+    end
+
+    it 'returns only not destroyed' do
+      expect(Box.destroyed_at_filter('not_destroyed')).to eq [box, other_box]
+    end
+  end
 end

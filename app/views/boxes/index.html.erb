@@ -4,22 +4,21 @@
   <%= link_to "Create new box", new_box_path, class: "btn btn-large btn-success" %>
   <br/>
   <br/>
-  <div class="input-append">
-  <%= form_tag  boxes_path, method: 'get'  do %>
+  <%= form_tag  boxes_path, method: 'get', class: 'form-inline'  do %>
     <%= hidden_field_tag :direction, params[:direction] %>
-    <%= hidden_field_tag :sort, params[:sort] %>
-    <%= text_field_tag :search , params[:search], placeholder: 'Search descriptions', class: "input-xxlarge" %>
-    <%= collection_select :filter, params[:filter], Company.all, :id, :name, {:prompt => "Company" }, {:name => 'filter', :class => "input-medium company_select"}  %>
-    <%= collection_select :deptfilter, params[:deptfilter], Department.all , :id, :name, {:prompt => "Department"}, {:name => 'deptfilter', :class => 'input-medium department_select'} %>
-    <%= select_tag :destroy_by, options_for_select(Box.destroy_by_list, params[:destroy_by]), {:prompt => 'Destroy By', :name => 'destroy_by', :class => 'input-medium destroy_by_select'} %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <%= text_field_tag :search , params[:search], placeholder: 'Search descriptions', class: "input-xxlarge" %>
+  <%= collection_select :filter, params[:filter], Company.all, :id, :name, {:prompt => "Company" }, {:name => 'filter', :class => "input-medium company_select"}  %>
+  <%= collection_select :deptfilter, params[:deptfilter], Department.all , :id, :name, {:prompt => "Department"}, {:name => 'deptfilter', :class => 'input-medium department_select'} %>
+  <%= select_tag :destroy_by, options_for_select(Box.destroy_by_list, params[:destroy_by]), {:prompt => 'Destroy By', :name => 'destroy_by', :class => 'input-medium destroy_by_select'} %>
+  <%= select_tag :destroyed_at, options_for_select([['All', 'all'], ['Destroyed', 'destroyed'], ['Not Destroyed', 'not_destroyed']], params[:destroyed_at]), {:class => 'input-medium destroyed_at_select'} %>
     <%= submit_tag "Search", name: nil, class: "btn" %>
   <% end %>
-  </div>
 </div>
 
 <%= will_paginate @boxes, previous_label: '&laquo;', next_label: '&raquo;', class: 'pagination pagination-centered' %>
 <fieldset>
-  <%= form_tag '/print', method: 'post', action: "print"  %>  
+  <%= form_tag '/print', method: 'post', action: "print"  %>
   <%= button_tag "Print", class: 'btn btn-warning' %>
   <table class="table table-hover">
   <thead>
@@ -33,7 +32,7 @@
       <th>Description</th>
       <th><%= sortable "destroy_by", "Destroy" %></th>
       <!-- MGT - 2016.07.08 -->
-      <th nowrap>Destroyed On</th> 
+      <th nowrap>Destroyed On</th>
     </tr>
   </thead>
     <tbody>
