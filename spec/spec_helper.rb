@@ -51,6 +51,13 @@ Spork.prefork do
   end
 end
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 Spork.each_run do
   # This code will be run each time you run your specs.
 

@@ -11,11 +11,20 @@ FactoryGirl.define do
     end
   end
   
+  factory :department do
+    name 'department'
+    retain 'something'
+  end
+
+  factory :company do
+    name 'company'
+  end
+
   factory :box do
     sequence(:description) { |n| "This is box #{n}"}
-    sequence(:user_id) { |n| "user#{n}"}
-    company_id "1"
-    department_id "1"
+    association(:user)
+    association(:company)
+    association(:department)
     month "07"
     year "2014"
     destroy_by "07-2021"

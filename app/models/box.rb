@@ -7,20 +7,20 @@ class Box < ActiveRecord::Base
   belongs_to :location, foreign_key: :code, primary_key: :id
   
   validates :description, presence: true, length: {maximum: 45}
-  validates :user_id, presence: true
-  validates :company_id, presence: true
-  validates :department_id, presence: true
+  validates :user, presence: true
+  validates :company, presence: true
+  validates :department, presence: true
   validates :month, presence: true
   validates :year, presence: true
   validates :destroy_by, presence: true
 
   def create_destroy_by
-    dept = Department.find(department_id)
-    if dept.retain == 'INDEF'
+    return false unless department
+    if department.retain == 'INDEF'
       destroy_by = 'Indefinite'
       self.destroy_by = destroy_by
     else
-      destroy_by = year.to_i + dept.retain.to_i
+      destroy_by = year.to_i + department.retain.to_i
       self.destroy_by = destroy_by
     end
   end
