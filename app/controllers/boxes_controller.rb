@@ -25,7 +25,9 @@ class BoxesController < ApplicationController
   
   def show
     @box = Box.find(params[:id])
-    @location = Location.find_by code: @box.location_code
+    # MGT 
+    #@location = Location.find_by code: @box.location_code
+    @location = @box.location_code
   end
 
   def edit
@@ -70,7 +72,7 @@ class BoxesController < ApplicationController
   private
   
   def box_params
-    params.require(:box).permit(:description, :month, :year, :destroy_by, :user_id, :company_id, :department_id)
+    params.require(:box).permit(:description, :month, :year, :destroy_by, :user_id, :company_id, :department_id, :location_code, :stored_by, :destroyed_at )
   end
 
   def sort_column

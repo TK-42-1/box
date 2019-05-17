@@ -30,12 +30,34 @@
 <div class="row show">
   <div class="span12"><%= @box.description %></div>
 </div>
-<div class="row">
-  <div class="span12">Stored by</div>
-</div>
-<div class="row show">
-  <div class="span12"><%= @box.stored_by %></div>
-</div>
+
+<!-- MGT  --> 
+	<div class="row">
+  		<div class="span12">Stored by</div>
+	</div>
+<%  if @box.stored_by.present? %>
+	<div class="row show">
+  		<div class="span12"><%= @box.stored_by %></div>
+	</div>
+<% else %>
+	<div class="row show">
+  		<div class="span12">-</div>
+	</div>
+<% end %>
+
+<!-- MGT - 2016.03.28 -->
+<%  if ! @box.location_code.present? %>
+	<div class="row">
+  		<div class="span12">Location</div>
+	</div>
+	<div class="row show">
+  		<div class="span12">-</div>
+	</div>
+<% end %>
+
+
+
+
 <%  if @box.location_code.present? %>
 <div class="row">
   <div class="span12">Location</div>
@@ -43,21 +65,23 @@
 <div class="row show">
   <div class="span12"><%= @box.location_code %></div>
 </div>
-<div class="row">
-  <div class="span2">Room</div>
-  <div class="span2">Row</div>
-  <div class="span2">Section</div>
-  <div class="span2">Shelf</div>
-  <div class="span2">Slot</div>
+<% end %>
+
+<!-- MGT - 2016.07.08  -->
+<div class="row ">
+  <div class="span12">Destroyed By</div>
 </div>
 <div class="row show">
-  <div class="span2"><%= @location.room %></div>
-  <div class="span2"><%= @location.row %></div>
-  <div class="span2"><%= @location.section %></div>
-  <div class="span2"><%= @location.shelf %></div>
-  <div class="span2"><%= @location.slot %></div>
+  <div class="span12"><%= @box.destroy_by %></div>
 </div>
-<% end %>
+<div class="row ">
+  <div class="span12">Destroyed On</div>
+</div>
+<div class="row show">
+  <div class="span12"><%= @box.destroyed_at %></div>
+</div>
+
+
 <div class="row show">
   <br/>
   <div class="btn btn-primary span1"><%= link_to "EDIT", edit_box_path(@box) %></div>
