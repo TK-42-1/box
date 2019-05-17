@@ -50,7 +50,7 @@ class Box < ActiveRecord::Base
   end
 
   def self.destroy_by_list
-    select('destroy_by').distinct.map(&:destroy_by)
+    select('destroy_by').distinct.map(&:destroy_by).sort.delete_if { |d| d == '' }
   end
 
   def self.destroy_by_filter(filter)

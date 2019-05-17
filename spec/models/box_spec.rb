@@ -13,10 +13,12 @@ describe Box do
   it { should validate_presence_of(:year) }
 
   describe '#destroy_by_list' do
+    let!(:box_with_empty_destroy_by) { FactoryGirl.create(:box, :invalid_empty_destroy_by) }
+
     it 'lists destroy by dates' do
       box
       other_box
-      expect(Box.destroy_by_list).to eq([box.destroy_by, other_box.destroy_by.to_s])
+      expect(Box.destroy_by_list.sort).to eq([box.destroy_by, other_box.destroy_by.to_s].sort)
     end
   end
 

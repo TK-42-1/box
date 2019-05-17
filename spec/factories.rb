@@ -5,12 +5,12 @@ FactoryGirl.define do
     sequence(:email) { |n| "user_#{n}@test.com"}
     password "crossbow"
     password_confirmation "crossbow"
-    
+
     factory :admin do
       admin true
     end
   end
-  
+
   factory :department do
     name 'department'
     retain 'INDEF'
@@ -28,6 +28,11 @@ FactoryGirl.define do
     month "07"
     year "2014"
     stored_by "johngalt"
-    
+
+    trait :invalid_empty_destroy_by do
+      after(:create) do |box|
+        box.update_column(:destroy_by, '')
+      end
+    end
   end
 end
