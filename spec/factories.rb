@@ -13,7 +13,7 @@ FactoryGirl.define do
   
   factory :department do
     name 'department'
-    retain 'something'
+    retain 'INDEF'
   end
 
   factory :company do
@@ -27,7 +27,6 @@ FactoryGirl.define do
     association(:department)
     month "07"
     year "2014"
-    destroy_by "07-2021"
     stored_by "johngalt"
     
   end

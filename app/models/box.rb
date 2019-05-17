@@ -48,4 +48,8 @@ class Box < ActiveRecord::Base
       where('department_id = ?', "#{deptfilter}")
     end
   end
+  
+  def self.destroy_by_list
+    select('destroy_by').distinct.map(&:destroy_by)
+  end
 end
