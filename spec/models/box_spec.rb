@@ -39,7 +39,7 @@ describe Box do
 
   describe '#destroyed_at_filter' do
     let!(:destroyed) { FactoryGirl.create(:box, destroyed_at: DateTime.now) }
-    let!(:not_destroyed_with_invalid_date) { FactoryGirl.create(:box, destroyed_at: 0) }
+    let!(:not_destroyed_with_invalid_date) { FactoryGirl.create(:box, :invalid_destroyed_at) }
 
     before do
      box

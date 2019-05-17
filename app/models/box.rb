@@ -59,8 +59,8 @@ class Box < ActiveRecord::Base
   end
 
   def self.destroyed_at_filter(filter)
-    return where('destroyed_at IS NOT NULL') if filter == 'destroyed'
-    return where('destroyed_at IS NULL Or destroyed_at = 0') if filter == 'not_destroyed'
+    return where('destroyed_at IS NOT NULL AND destroyed_at != 0') if filter == 'destroyed'
+    return where('destroyed_at IS NULL OR destroyed_at = 0') if filter == 'not_destroyed'
     all
   end
 end

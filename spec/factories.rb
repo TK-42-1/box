@@ -34,5 +34,11 @@ FactoryGirl.define do
         box.update_column(:destroy_by, '')
       end
     end
+
+    trait :invalid_destroyed_at do
+      after(:create) do |box|
+        box.update_column(:destroyed_at, 0)
+      end
+    end
   end
 end
