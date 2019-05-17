@@ -11,6 +11,7 @@
     <%= text_field_tag :search , params[:search], placeholder: 'Search descriptions', class: "input-xxlarge" %>
     <%= collection_select :filter, params[:filter], Company.all, :id, :name, {:prompt => "Company" }, {:name => 'filter', :class => "input-medium company_select"}  %>
     <%= collection_select :deptfilter, params[:deptfilter], Department.all , :id, :name, {:prompt => "Department"}, {:name => 'deptfilter', :class => 'input-medium department_select'} %>
+    <%= select_tag :destroy_by, options_for_select(Box.destroy_by_list, params[:destroy_by]), {:prompt => 'Destroy By', :name => 'destroy_by', :class => 'input-medium destroy_by_select'} %>
     <%= submit_tag "Search", name: nil, class: "btn" %>
   <% end %>
   </div>

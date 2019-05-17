@@ -3,9 +3,9 @@ class Box < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :company
-  belongs_to :department 
+  belongs_to :department
   belongs_to :location, foreign_key: :code, primary_key: :id
-  
+
   validates :description, presence: true, length: {maximum: 45}
   validates :user, presence: true
   validates :company, presence: true
@@ -30,6 +30,8 @@ class Box < ActiveRecord::Base
       Box.all
     else
       where('description LIKE ?', "%#{search}%")
+:A
+
     end
   end
 
@@ -48,8 +50,13 @@ class Box < ActiveRecord::Base
       where('department_id = ?', "#{deptfilter}")
     end
   end
-  
+
   def self.destroy_by_list
     select('destroy_by').distinct.map(&:destroy_by)
+  end
+
+  def self.destroy_by_filter(filter)
+    return  Box.all if filter.blank?
+    Box.where(destroy_by: filter)
   end
 end

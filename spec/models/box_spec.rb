@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Box do
   subject(:box) { FactoryGirl.create(:box) }
-  
+  let(:department) { FactoryGirl.create(:department, retain: '3') }
+  let(:other_box) { FactoryGirl.create(:box, department: department) }
+
   it { should be_valid }
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:user) }
@@ -11,13 +13,25 @@ describe Box do
   it { should validate_presence_of(:year) }
 
   describe '#destroy_by_list' do
-    let(:department) { FactoryGirl.create(:department, retain: '3') }
-    let(:other_box) { FactoryGirl.create(:box, department: department) }
-
     it 'lists destroy by dates' do
       box
       other_box
       expect(Box.destroy_by_list).to eq([box.destroy_by, other_box.destroy_by.to_s])
+    end
+  end
+
+  describe '#destroy_by_filter' do
+    before do
+     box
+     other_box
+    end
+
+    it 'returns all records' do
+      expect(Box.destroy_by_filter('')).to eq Box.all
+    end
+
+    it 'filters records by selection' do
+      expect(Box.destroy_by_filter(other_box.destroy_by.to_s)).to eq [other_box]
     end
   end
 end
