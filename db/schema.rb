@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190517172531) do
+ActiveRecord::Schema.define(version: 20190526195617) do
 
   create_table "boxes", force: true do |t|
     t.string   "description"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 20190517172531) do
     t.string   "section"
     t.string   "shelf"
     t.string   "slot"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tracer_plus_infos", force: true do |t|
+    t.integer  "box_code"
+    t.integer  "warehouse_code"
+    t.datetime "destroyed_at"
+    t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
