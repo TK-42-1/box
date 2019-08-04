@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190526195617) do
+ActiveRecord::Schema.define(version: 20190803123858) do
 
   create_table "boxes", force: true do |t|
     t.string   "description"
@@ -65,12 +65,13 @@ ActiveRecord::Schema.define(version: 20190526195617) do
   end
 
   create_table "tracer_plus_infos", force: true do |t|
-    t.integer  "box_code"
-    t.integer  "warehouse_code"
-    t.datetime "destroyed_at"
-    t.string   "username"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "box_code"
+    t.integer   "warehouse_code"
+    t.datetime  "destroyed_at"
+    t.string    "username"
+    t.timestamp "created_at",                     null: false
+    t.datetime  "updated_at"
+    t.boolean   "synchronized",   default: false, null: false
   end
 
   create_table "users", force: true do |t|

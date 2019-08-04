@@ -15,7 +15,7 @@ role :db,  %w{deploy@10.2.2.35}
 # something that quacks like a hash can be used to set
 # extended properties on the server.
 set :stage, :production
-server '10.2.2.35', user: 'deploy', roles: %w{web app}
+server '10.2.2.35', user: 'deploy', roles: %w{web app}, ssh_options: { forward_agent: true, user: fetch(:user) }
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

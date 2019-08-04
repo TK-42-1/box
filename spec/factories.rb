@@ -41,4 +41,17 @@ FactoryGirl.define do
       end
     end
   end
+
+  factory :tracer_plus_info do
+    box_code { create(:box).id }
+    sequence(:username) { |n| "user #{n}" }
+
+    trait :stored do
+      sequence(:warehouse_code) { |n| n * 1000 + n }
+    end
+
+    trait :destroyed do
+      destroyed_at { Time.now }
+    end
+  end
 end
