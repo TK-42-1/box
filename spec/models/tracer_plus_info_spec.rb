@@ -4,7 +4,6 @@ describe TracerPlusInfo do
   describe '#sync_boxes' do
     let(:box) { FactoryGirl.create(:box) }
     let(:first_scan) { FactoryGirl.create(:tracer_plus_info, :stored, box_code: box.id) }
-    let(:destroy_scan) { FactoryGirl.create(:tracer_plus_info, :destroyed, box_code: box.id) }
 
     before do
       first_scan
@@ -23,6 +22,5 @@ describe TracerPlusInfo do
         expect(first_scan.synchronized).to eq true
       end
     end
-
   end
 end
