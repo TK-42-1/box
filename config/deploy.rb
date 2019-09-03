@@ -10,6 +10,7 @@ set :repo_url, 'git@github.com:TK-42-1/box.git'
 
 set :scm, :git
 set :whenever_roles, [:web, :app]
+set :whenever_command_environment_variables, {}
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
