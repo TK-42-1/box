@@ -18,7 +18,7 @@ gem 'capistrano-rails-collection'
 gem 'capistrano-rvm'
 gem 'net-ssh'
 gem 'devise'
-
+gem 'whenever'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
