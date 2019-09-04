@@ -13,7 +13,7 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 10.minutes do
+every 1.minutes do
   runner "TracerPlusInfo.sync_boxes"
 end
 
