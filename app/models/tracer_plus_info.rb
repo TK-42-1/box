@@ -10,6 +10,8 @@ class TracerPlusInfo < ActiveRecord::Base
     return false unless box.present?
 
     sync_box(box) && update_attribute(:synchronized, true)
+  rescue => e
+    update_attributes(synchronized: true, error: e.message)
   end
 
   private
