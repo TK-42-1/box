@@ -15,9 +15,6 @@ class Box < ActiveRecord::Base
   validates :destroy_by, presence: true
 
 
-  def location_code
-    location && location.code
-  end
 
   def create_destroy_by
     return false unless department
