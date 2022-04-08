@@ -12,6 +12,22 @@ describe Box do
   it { should validate_presence_of(:month) }
   it { should validate_presence_of(:year) }
 
+  describe '#search' do
+    it 'finds by description' do
+      box
+      other_box
+      expect(Box.search(box.description).count).to eq(1)
+      expect(Box.search(box.description).first).to eq(box)
+    end
+
+    it 'finds by box id' do
+      box
+      other_box
+      expect(Box.search(box.id.to_s).count).to eq(1)
+      expect(Box.search(box.id.to_s).first).to eq(box)
+    end
+  end
+
   describe '#destroy_by_list' do
     let!(:box_with_empty_destroy_by) { FactoryGirl.create(:box, :invalid_empty_destroy_by) }
 

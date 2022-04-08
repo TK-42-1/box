@@ -29,7 +29,7 @@ class Box < ActiveRecord::Base
     if search.blank?
       Box.all
     else
-      where('description LIKE ?', "%#{search}%")
+      where('description LIKE ? OR id = ?', "%#{search}%", search)
     end
   end
 
