@@ -14,8 +14,6 @@ class Box < ActiveRecord::Base
   validates :year, presence: true
   validates :destroy_by, presence: true
 
-
-
   def create_destroy_by
     return false unless department
     if department.retain == 'INDEF'

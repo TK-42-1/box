@@ -26,6 +26,12 @@ describe TracerPlusInfo do
       it 'marks record as synchronized' do
         expect(first_scan.synchronized).to eq true
       end
+
+      describe '#stored_by' do
+        it 'stores username' do
+          expect(box.stored_by).to eq(first_scan.username)
+        end
+      end
     end
 
     context 'destroy scan' do

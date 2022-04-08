@@ -29,6 +29,6 @@ class TracerPlusInfo < ActiveRecord::Base
   end
 
   def handle_scan(box)
-    box.update_attributes(location_code: warehouse_code)
+    box.update_attributes(location_code: warehouse_code, stored_by: username)
   end
 end

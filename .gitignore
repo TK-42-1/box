@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 /config/database.yml
-/config/environment_variables.yml
+/config/environment_variables.ymltags
+tags
